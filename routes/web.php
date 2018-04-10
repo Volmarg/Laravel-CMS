@@ -37,3 +37,6 @@ Route::post('/uploading','uploadController@save');
 #--------------- media manager controllers
 Route::get('/media-library','mediaLibraryController@view');
 Route::get('media-process','mediaLibraryController@remove');
+
+#--------------- users manager Controllers
+Route::get('/users','UsersController@show');
