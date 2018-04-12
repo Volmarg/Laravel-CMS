@@ -19,11 +19,21 @@
             <td>{{$key}}.</td>
             <td><b>{{$value->name}}</b></td>
             <td><b>{{$value->accountType}}</b></td>
+            <td><select>
+                @foreach($accountTypes as $key => $type)
+                    <option>
+                      {{$type->type}}
+                    </option>
+                @endforeach
+            </select></td>
+            <td>Remove</td>
         </tr>
           @endforeach
 
       </tbody>
     </table>
+
+    <button class="btn btn-warning">Update</button>
 
   </div>
 

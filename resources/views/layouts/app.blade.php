@@ -105,6 +105,11 @@
                                   Users
                               </a>
                             </li>
+                            <li>
+                              <a href="/menu" class="dropdown-toggle" >
+                                  Menu
+                              </a>
+                            </li>
                         @endguest
 
                         <!-- here menu ends !-->
