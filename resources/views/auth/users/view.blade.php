@@ -2,12 +2,31 @@
 
 @section('content')
 
-<h1>Users data here</h1>
+<section classs="mainWrap" style="display:flex;justify-content:space-around;">
 
-@foreach ($allUsers as $key => $value)
+  <div class="wrapper">
 
-  {{$key}}. <b>{{$value->name}}</b><br/>
+    <h1>Users data here</h1>
 
-@endforeach
+    <table>
+      <thead>
+
+      </thead>
+      <tbody>
+
+          @foreach ($allUsers as $key => $value)
+        <tr>
+            <td>{{$key}}.</td>
+            <td><b>{{$value->name}}</b></td>
+            <td><b>{{$value->accountType}}</b></td>
+        </tr>
+          @endforeach
+
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
 
 @endsection

@@ -101,8 +101,8 @@
 
                             </li>
                             <li>
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                  Users 
+                              <a href="/users" class="dropdown-toggle" >
+                                  Users
                               </a>
                             </li>
                         @endguest
