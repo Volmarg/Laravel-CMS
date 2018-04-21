@@ -15,5 +15,11 @@ class MenuController extends Controller
 
   }
 
+  public function frontView(){
+    $test='test';
+
+    return view('/',compact('test'));
+  }
+
 
 }
