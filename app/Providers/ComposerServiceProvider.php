@@ -1,4 +1,6 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use View;
 use Illuminate\Support\ServiceProvider;
@@ -13,7 +15,7 @@ class ComposerServiceProvider extends ServiceProvider {
     public function boot()
     {
         // Using class based composers...
-        View::composer('profile', 'App\Http\ViewComposers\ProfileComposer');
+        View::composer('*', 'App\Http\ViewComposers\ProfileComposer');
 
         // Using Closure based composers...
         View::composer('dashboard', function($view)

@@ -1,0 +1,38 @@
+
+ul.menuFront{
+  font-weight:bold;
+  margin-right:150px;
+
+
+li+li{
+  margin-left:10px !important;
+}
+
+.dropdown{
+
+  ul{
+    width:50px;
+    margin-top:-20px; //jakis dziwny fix
+    display:none;
+    li{
+      list-style-type: block;
+    }
+
+  }
+}
+
+.dropdown:hover{
+  ul{
+    display:block;
+  }
+}
+
+  li{
+    display:inline;
+  }
+
+  a{
+    text-decoration: none;
+    color:black;
+  }
+}

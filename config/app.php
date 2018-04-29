@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\ViewComposers;
+
 return [
 
     /*
@@ -176,6 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
+        App\Http\ViewComposers\ComposerServiceProvider::class,
 
     ],
 

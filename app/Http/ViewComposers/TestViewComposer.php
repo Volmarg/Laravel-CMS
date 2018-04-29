@@ -1,9 +1,7 @@
-<?
+<?php
 namespace App\Http\ViewComposers;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Users\Repository as UserRepository;
-
 
 class TestViewComposer{
 
@@ -15,7 +13,9 @@ class TestViewComposer{
       $this->variable = 'var';
   }
 
+
+
   public function compose(View $view){
-    $view->with('variable',$this->variable);
+    $view->with('var','$this->variable');
   }
 }

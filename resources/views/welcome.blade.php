@@ -69,13 +69,28 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <ul class="menuFront">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <li> <a href="{{ url('/home') }}">Home</a> </li>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                      <li> <a href="{{ route('login') }}">Login</a></li>
+                      <li><a href="{{ route('register') }}">Register</a></li>
                     @endauth
-                        <a href="{{url('#')}}">Menu</a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                Menu <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                  @foreach ($menuElements as $key => $element)
+                                    <a href="{{$element->slug}}">{{$element->name}}</a>
+                                  @endforeach
+                                </li>
+
+                            </ul>
+                        </li>
+                  </ul>
                 </div>
             @endif
 

@@ -1,21 +1,20 @@
 <?php namespace App\Http\ViewComposers;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Users\Repository as UserRepository;
 
 class ProfileComposer {
 
     protected $users;
 
-    public function __construct(UserRepository $users)
+    public function __construct()
     {
         // Dependencies automatically resolved by service container...
-        $this->users = $users;
+        $this->users = array('1','2');
     }
 
     public function compose(View $view)
     {
-        $view->with('count', '12');
+        $view->with('counter', '123');
     }
 
 }
