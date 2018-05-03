@@ -40,6 +40,8 @@ Route::get('media-process','mediaLibraryController@remove');
 
 #--------------- users manager Controllers
 Route::get('/users','UsersController@show');
+Route::get('/user-remove/{slug}','UsersController@removeUser');
+Route::post('/users-change-privilage','UsersController@changePrivilage');
 
 #--------------- menu manager Controllers
 Route::get('/menu','MenuController@view');

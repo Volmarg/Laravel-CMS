@@ -4,10 +4,10 @@
 
 <section classs="mainWrap" style="display:flex;justify-content:space-around;">
 
-  <div class="wrapper">
+  <div class="wrapper usersWrap">
 
     <h1>Users data here</h1>
-
+<form action="/users-change-privilage" method="POST">
     <table>
       <thead>
 
@@ -19,21 +19,29 @@
             <td>{{$key}}.</td>
             <td><b>{{$value->name}}</b></td>
             <td><b>{{$value->accountType}}</b></td>
-            <td><select>
+            <td><select name="accountType-select-{{$value->name}}">
                 @foreach($accountTypes as $key => $type)
-                    <option>
+                    <option
+                      @if ($value->accountType==$type->type)
+                        selected
+                      @endif
+                    >
                       {{$type->type}}
                     </option>
                 @endforeach
             </select></td>
-            <td>Remove</td>
+            <td><a href="user-remove/{{$value->name}}">Remove</a></td>
         </tr>
           @endforeach
 
       </tbody>
     </table>
 
-    <button class="btn btn-warning">Update</button>
+
+      {!! csrf_field() !!}
+      <input type="submit" name="submited" value="Update" class="btn btn-warning">
+    </form>
+
 
   </div>
 
