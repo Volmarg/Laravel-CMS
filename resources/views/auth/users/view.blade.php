@@ -15,7 +15,11 @@
       <tbody>
 
           @foreach ($allUsers as $key => $value)
-        <tr>
+              @if(auth()->user()->name==$value->name)
+                <tr class="activeUser">
+              @else
+                <tr>
+              @endif
             <td>{{$key}}.</td>
             <td><b>{{$value->name}}</b></td>
             <td><b>{{$value->accountType}}</b></td>
@@ -28,6 +32,7 @@
                     >
                       {{$type->type}}
                     </option>
+
                 @endforeach
             </select></td>
             <td><a href="user-remove/{{$value->name}}">Remove</a></td>

@@ -60,7 +60,14 @@ li+li{
     padding:5px;
     padding-left:10px;
   }
+
+  .activeUser{
+    td{
+      color:red;
+    }
+  }
 }
+
 
 // ######## GLOBAL ##########
 .content{
