@@ -20,6 +20,7 @@ class postingController extends Controller
       $db->title=request('title');
       $db->body=request('body');
       $db->user_id=Auth::user()->id;
+      $db->slug=str_slug(request('title'),'-');
       $db->save();
 
       return redirect('/posts/create');
