@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/global.min.css">
+        <link rel="stylesheet" href="/css/frontend.min.css">
 
         <title>Laravel</title>
 
@@ -76,6 +77,25 @@
                       <li> <a href="{{ route('login') }}">Login</a></li>
                       <li><a href="{{ route('register') }}">Register</a></li>
                     @endauth
+
+                    @foreach ($menuElements as $key => $lvl_1)
+                      {{-- but print only if given element doesnt have a parent so it's main menu element --}}
+                      @if ($lvl_1->parentID=='-1')
+                        <li><a href="{{$lvl_1->slug}}">{{$lvl_1->name}}</a>
+                          {{-- Now for each element we need to check if there is any element which parent id is eq to this one id --}}
+                          <ul class="sub_menu">
+                            @foreach ($menuElements as $key_ => $lvl_2)
+                                @if ($lvl_1->id==$lvl_2->parentID)
+                                  <li>{{$lvl_2->name}}</li>
+                                @endif
+                            @endforeach
+                          </ul>
+                        </li>
+                      @endif
+                    @endforeach
+
+
+                      {{--old way menu --}}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                 Menu <span class="caret"></span>
@@ -90,6 +110,9 @@
 
                             </ul>
                         </li>
+
+
+
                   </ul>
                 </div>
             @endif

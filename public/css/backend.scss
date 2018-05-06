@@ -1,0 +1,23 @@
+
+
+// media library //
+
+.media-lib-image{
+  width:250px;
+}
+
+
+// ######## Users Panel #####
+.usersWrap{
+
+  td{
+    padding:5px;
+    padding-left:10px;
+  }
+
+  .activeUser{
+    td{
+      color:red;
+    }
+  }
+}

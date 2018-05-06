@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/global.min.css">
-
+    <link rel="stylesheet" href="/css/backend.min.css">
 
     <!-- Scripts !-->
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
