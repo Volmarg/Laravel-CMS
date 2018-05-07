@@ -20,6 +20,7 @@ Route::get('/', 'frontController@posts');
 #--------------- posts ctreation middleware
 Route::put('/posting','postingController@create');
 Route::post('/posting','postingController@edit');
+Route::get('/posts/remove/{slug}','postingController@remove');
 
 #-------------- Authorization controllers
 Auth::routes();
@@ -29,6 +30,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/posts/create','PostsController@create');
 Route::get('/posts/manage','PostsController@manage');
 Route::get('/posts/edit/{slug}','PostsController@edit');
+
+#---------------- showPosts
+Route::get('/page/post/{slug}','PostsController@view');
 
 #--------------- uploading controllers
 Route::get('/upload','uploadController@send');

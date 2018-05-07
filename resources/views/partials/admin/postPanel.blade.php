@@ -8,7 +8,7 @@
  </div>
  <div class="form-group">
    <label for="body">Post body</label>
-   <input type="text" class="form-control" id="body" name="body">
+   <textarea class="form-control" id="textAreaTinyMce2" name="body" value=""></textarea>
  </div>
 
  <button type="submit" class="btn btn-default">Submit</button>

@@ -41,4 +41,11 @@ class postingController extends Controller
 
       return redirect('/');
     }
+
+    public function remove($slug){
+
+      post::where('slug',$slug)->delete();
+      return redirect($_SERVER['HTTP_REFERER']);
+
+    }
 }
