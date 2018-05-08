@@ -17,6 +17,10 @@ class uploadController extends Controller
       $files=array();
       $files=request()->file();
 
+      $redirect->validate([
+        'fileToUpload'=>'image',
+      ]);
+
         foreach($files as $file){
           foreach($file as $fileData){
             $name=$fileData->getClientOriginalName();
@@ -30,6 +34,6 @@ class uploadController extends Controller
         }
 
 
-        //dd($files);
+        dd($files);
     }
 }
