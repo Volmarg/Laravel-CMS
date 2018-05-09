@@ -27,11 +27,11 @@
             <ul>
               @foreach ($menuElements as $key_ => $lvl_2)
                   @if ($lvl_1->id==$lvl_2->parentID)
-                    <li>{{$lvl_2->name}}</li>
+                    <li>{{$lvl_2->name}} <span id="removeMenuElement">[-]</span></li>
                   @endif
               @endforeach
             </ul>
-          </li>          
+          </li>
         @endif
       @endforeach
     </ul>

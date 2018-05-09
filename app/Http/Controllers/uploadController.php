@@ -13,27 +13,24 @@ class uploadController extends Controller
       return view('/partials/admin/uploadPanel');
     }
 
-    public function save(){
+    public function save(Request $request){
       $files=array();
       $files=request()->file();
 
-      $redirect->validate([
+      $request->validate([
         'fileToUpload'=>'image',
       ]);
 
-        foreach($files as $file){
-          foreach($file as $fileData){
+        foreach($files as $fileData){
             $name=$fileData->getClientOriginalName();
-
             #$putted=Storage::put($name,file_get_contents($fileData));
             $putted=Storage::putFile('public/images',new File($fileData));
 
 
             return redirect('/upload');
-          }
         }
 
 
-        dd($files);
+        #dd($files);
     }
 }

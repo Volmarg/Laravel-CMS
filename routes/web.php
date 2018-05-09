@@ -49,3 +49,6 @@ Route::post('/users-change-privilage','UsersController@changePrivilage');
 
 #--------------- menu manager Controllers
 Route::get('/menu','MenuController@view');
+
+#--------------- Ajax Controllers
+Route::get('/ajaxUpdateMenu','ajaxUpdate@menuUpdate');
