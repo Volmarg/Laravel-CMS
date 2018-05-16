@@ -16,5 +16,19 @@ class MenuController extends Controller
 
   }
 
+  public function edit(){
+
+    $menus=new menu();
+
+    foreach($_POST as $id => $oneInput){
+      if($oneInput=='false'){
+        $menus->where('id',$id)->delete();
+      }
+    }
+    die();
+
+    return redirect($_SERVER['HTTP_REFERER']);
+  }
+
 
 }

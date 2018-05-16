@@ -6,8 +6,9 @@ function ajaxRequests(){
     });
   }
 }
-
 /* TEST */
 
+
+
 var a=new ajaxRequests();
-a.menuUpdate();
+//a.menuUpdate();
