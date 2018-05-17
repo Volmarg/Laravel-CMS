@@ -8,7 +8,7 @@
     <h1>Existing posts</h1>
     <ol>
       @foreach ($allPosts as $num => $post)
-        <li><span class="postNameLinksMenu">{{$post->title}}</span> -> <a data-id="{{$post->id}}" href="{{url($post->slug)}}">{{url($post->slug)}}</a><span class="addElemenMenu">[+]</span></li>
+        <li><span class="postNameLinksMenu">{{$post->title}}</span> -> <a data-id="{{$post->id}}" href="{{url($post->slug)}}">{{url($post->slug)}}</a><button class="addElemenMenu">[+]</button></li>
       @endforeach
     </ol>
 
@@ -25,14 +25,14 @@
         @foreach ($menuElements as $key => $lvl_1)
           {{-- but print only if given element doesnt have a parent so it's main menu element --}}
           @if ($lvl_1->parentID=='-1')
-            <li>{{$lvl_1->name}} - {{$lvl_1->slug}}
-              <input type="hidden" name="{{$lvl_1->id}}" value="true" />
+            <li><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
+              <input type="hidden" name="{{$lvl_1->id}}" value="true" /><button class="removeMenuElement">[-]</button>
               {{-- Now for each element we need to check if there is any element which parent id is eq to this one id --}}
               <ul>
                 @foreach ($menuElements as $key_ => $lvl_2)
                     @if ($lvl_1->id==$lvl_2->parentID)
-                      <li>{{$lvl_2->name}} <span class="removeMenuElement">[-]</span></li>
-                      <input type="hidden" name="{{$lvl_2->id}}" value="true" />
+                      <li><span class="menuConfigElement">{{$lvl_2->name}}</span> <input type="hidden" name="{{$lvl_2->id}}" value="true" /><button class="removeMenuElement">[-]</button></li>
+
                     @endif
                 @endforeach
               </ul>

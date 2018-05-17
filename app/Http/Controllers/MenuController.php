@@ -21,10 +21,11 @@ class MenuController extends Controller
     $menus=new menu();
 
     foreach($_POST as $id => $oneInput){
-      if($id==1){break;}
+      if($id==1){continue;}
 
       elseif($oneInput=='false'){
         $menus->where('id',$id)->delete();
+
       }elseif($oneInput=='true'){
 
       }else{
@@ -38,19 +39,11 @@ class MenuController extends Controller
               $menus->insert([
                 'name'=>$_POST[$x][0], 'slug'=>$_POST[$x][1], 'depth'=>'1','parentID'=>'-1'
               ]);
-              echo '<pre>';
-              var_dump($_POST[$x]);
-              echo '</pre>';
             }
         }
 
       }
     }
-
-
-    dd($_POST);
-    echo '</br></hr></br>';
-    dd($size);
 
     return redirect($_SERVER['HTTP_REFERER']);
   }

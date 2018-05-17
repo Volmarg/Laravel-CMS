@@ -6,9 +6,11 @@ function editMenu(){
       var parent_=$(this).parent('li');
 
       //hidden input
-      parent_.next().val('false');
-      //List element
-      parent_.remove();
+      $(this).prev().val('false');
+      //List element set to hidden
+      parent_.css('display','none');
+      //but also if current menu element has subelements then these need to be deactivated as well
+      parent_.find('input').val('false');
     })
   }
 
@@ -18,6 +20,7 @@ function editMenu(){
       var link=$(this).prev();
       var anchor=$(link).prev();
 
+      //adding a number to the next element based on the currently highest number found in menu
       var num=0;
       var menuBuilder=$('.menuActiveElementsAdmin>ul');
       var lastID=menuBuilder.find('input').each(function(){
