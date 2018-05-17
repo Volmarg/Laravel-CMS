@@ -8,7 +8,7 @@
     <h1>Existing posts</h1>
     <ol>
       @foreach ($allPosts as $num => $post)
-        <li>{{$post->title}} -> <a href="{{url($post->slug)}}">{{url($post->slug)}}</a><span class="addElemenMenu">[-]</span></li>
+        <li><span class="postNameLinksMenu">{{$post->title}}</span> -> <a data-id="{{$post->id}}" href="{{url($post->slug)}}">{{url($post->slug)}}</a><span class="addElemenMenu">[+]</span></li>
       @endforeach
     </ol>
 
