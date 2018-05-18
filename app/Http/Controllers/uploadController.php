@@ -27,7 +27,7 @@ class uploadController extends Controller
             $putted=Storage::putFile('public/images',new File($fileData));
 
 
-            return redirect('/upload');
+            return redirect('/media/upload');
         }
 
 

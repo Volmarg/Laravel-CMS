@@ -35,12 +35,17 @@ Route::get('/posts/edit/{slug}','PostsController@edit');
 Route::get('/page/post/{slug}','PostsController@view');
 
 #--------------- uploading controllers
-Route::get('/upload','uploadController@send');
-Route::post('/uploading','uploadController@save');
+
+Route::prefix('media')->group(function(){
+
+  Route::get('/upload','uploadController@send');
+  Route::post('/uploading','uploadController@save');
 
 #--------------- media manager controllers
-Route::get('/media-library','mediaLibraryController@view');
-Route::get('media-process','mediaLibraryController@remove');
+  Route::get('library','mediaLibraryController@view');
+  Route::get('process','mediaLibraryController@remove');
+});
+
 
 #--------------- users manager Controllers
 Route::get('/users','UsersController@show');

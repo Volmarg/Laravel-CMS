@@ -19,6 +19,6 @@ class mediaLibraryController extends Controller
       //dd($filename);
       Storage::delete($filename);
 
-      return redirect('/media-library');
+      return redirect('/media/library');
     }
 }

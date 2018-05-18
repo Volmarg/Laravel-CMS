@@ -94,8 +94,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{url('upload')}} ">Upload</a>
-                                        <a href="{{url('media-library')}}">Library</a>
+                                        <a href="{{url('/media/upload')}} ">Upload</a>
+                                        <a href="{{url('/media/library')}}">Library</a>
                                     </li>
 
                                 </ul>
