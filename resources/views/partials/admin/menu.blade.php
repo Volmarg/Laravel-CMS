@@ -16,30 +16,33 @@
 
   <div class="wrapper">
 
+
+
     <h1> Menu management here </h1>
     {{-- This one prints level 1 menu --}}
     <form action="menu-edit" method="POST" class="menuActiveElementsAdmin">
         {{csrf_field()}}
       <input type="hidden" value="test" />
-      <ul id="menuBuilderBackendSortable">
+      <ol id="menuBuilderBackendSortable">
         @foreach ($menuElements as $key => $lvl_1)
           {{-- but print only if given element doesnt have a parent so it's main menu element --}}
           @if ($lvl_1->parentID=='-1')
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
+            <li class="ui-state-default"><div><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
               <input type="hidden" name="{{$lvl_1->id}}" value="true" /><button class="removeMenuElement">[-]</button>
               {{-- Now for each element we need to check if there is any element which parent id is eq to this one id --}}
-              <ul>
+              <ol>
                 @foreach ($menuElements as $key_ => $lvl_2)
                     @if ($lvl_1->id==$lvl_2->parentID)
-                      <li><span class="menuConfigElement">{{$lvl_2->name}}</span> <input type="hidden" name="{{$lvl_2->id}}" value="true" /><button class="removeMenuElement">[-]</button></li>
+                      <li><div><span class="menuConfigElement">{{$lvl_2->name}}</span> <input type="hidden" name="{{$lvl_2->id}}" value="true" /><button class="removeMenuElement">[-]</button></div></li>
 
                     @endif
                 @endforeach
-              </ul>
+                </ol>
+              </div>
             </li>
           @endif
         @endforeach
-      </ul>
+      </ol>
 
       <input type="submit" value="Save" />
     </form>
