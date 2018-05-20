@@ -9,6 +9,7 @@ Creating Laravel based CMS in order to learn basics of this framework first proj
 <li>authentication,</li>
 <li>changing users privilages,</li>
 <li>uploading files,</li>
+<li>menu editing</li>
 <li>removing uploaded files.</li>
 </ul>
 
