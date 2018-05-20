@@ -21,11 +21,11 @@
     <form action="menu-edit" method="POST" class="menuActiveElementsAdmin">
         {{csrf_field()}}
       <input type="hidden" value="test" />
-      <ul>
+      <ul id="menuBuilderBackendSortable">
         @foreach ($menuElements as $key => $lvl_1)
           {{-- but print only if given element doesnt have a parent so it's main menu element --}}
           @if ($lvl_1->parentID=='-1')
-            <li><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
               <input type="hidden" name="{{$lvl_1->id}}" value="true" /><button class="removeMenuElement">[-]</button>
               {{-- Now for each element we need to check if there is any element which parent id is eq to this one id --}}
               <ul>
@@ -44,9 +44,7 @@
       <input type="submit" value="Save" />
     </form>
 
-
   </div>
-
 
 </section>
 

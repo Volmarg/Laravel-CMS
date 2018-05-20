@@ -1,5 +1,4 @@
 function editMenu(){
-
   //Removing elements from menu
   this.removeElement=function(){
     $('.removeMenuElement').on('click',function(){

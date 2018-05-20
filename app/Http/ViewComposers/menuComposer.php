@@ -8,7 +8,7 @@ class MenuComposer {
 
     public function compose(View $view)
     {
-        $menuElements=menu::all();
+        $menuElements=menu::all()->sortBy('sortOder');
         $view->with('menuElements', $menuElements);
     }
 

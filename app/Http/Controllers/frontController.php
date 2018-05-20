@@ -14,4 +14,8 @@ class frontController extends Controller
 
       return view('partials/front/posts',compact('posts'));
     }
+
+    public function subdomain(){
+      return 'Yes, this is a subdomain!';
+    }
 }

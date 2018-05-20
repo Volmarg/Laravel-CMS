@@ -15,7 +15,11 @@
 sprzatnac controllery w katalogu controllers, ktore od czegu np. view/ kontrola zapisu itp
 */
 
+Route::domain('admin.localhost')->group(function(){
+  Route::get('/', 'frontController@subdomain');
+});
 Route::get('/', 'frontController@posts');
+
 
 #--------------- posts ctreation middleware
 Route::put('/posting','postingController@create');
@@ -48,9 +52,9 @@ Route::prefix('media')->group(function(){
 
 
 #--------------- users manager Controllers
-Route::get('/users','UsersController@show');
-Route::get('/user-remove/{slug}','UsersController@removeUser');
-Route::post('/users-change-privilage','UsersController@changePrivilage');
+  Route::get('/users','UsersController@show');
+  Route::get('/user-remove/{slug}','UsersController@removeUser');
+  Route::post('/users-change-privilage','UsersController@changePrivilage');
 
 #--------------- menu manager Controllers
 Route::get('/menu','MenuController@view');

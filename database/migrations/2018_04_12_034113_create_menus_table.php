@@ -20,6 +20,7 @@ class CreateMenusTable extends Migration
             $table->integer('parentID');
             $table->string('slug');
             $table->timestamps();
+            $table->integer('sortOder');
         });
     }
 

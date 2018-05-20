@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/global.min.css">
     <link rel="stylesheet" href="/css/backend.min.css">
-
+    <link rel="stylesheet" href="{{asset('js/jquery-ui-1.12.1.custom/jquery-ui.css')}}">
     <!-- Scripts !-->
+
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{asset('js/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
+    <script src="{{asset('js/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+    <script>
+    $( function() {
+      $( "#sortable" ).sortable();
+      $( "#sortable" ).disableSelection();
+    } );
+    </script>
     @yield('scripts')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -123,8 +132,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+
     <script src="{{ asset('js/ajax.js')}}"></script>
     <script src="{{ asset('js/menuEdit.js')}}"></script>
+    <script src="{{ asset('js/jqUiCalls.js')}}"></script>
+    <script src="{{ asset('js/initializer.js')}}"></script>
+
+
 </body>
 </html>
