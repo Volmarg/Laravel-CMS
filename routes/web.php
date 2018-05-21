@@ -52,10 +52,13 @@ Route::prefix('media')->group(function(){
 
 
 #--------------- users manager Controllers
-  Route::get('/users','UsersController@show');
-  Route::get('/user-remove/{slug}','UsersController@removeUser');
-  Route::post('/users-change-privilage','UsersController@changePrivilage');
+Route::middleware(['superAdmin'])->group(function (){
 
+    Route::get('/users','UsersController@show');
+    Route::get('/user-remove/{slug}','UsersController@removeUser');
+    Route::post('/users-change-privilage','UsersController@changePrivilage');
+
+});
 #--------------- menu manager Controllers
 Route::get('/menu','MenuController@view');
 Route::post('/menu-edit','MenuController@edit');

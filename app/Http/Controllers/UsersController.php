@@ -20,13 +20,8 @@ class UsersController extends Controller
       $allUsers=users::all();
       $accountTypes=usersTypes::all();
 
-      if(Gate::allows('usersManagement',$allUsers)){
-        return view('auth/users/view',compact('allUsers','accountTypes'));
+      return view('auth/users/view',compact('allUsers','accountTypes'));
 
-      }else{
-        return redirect('/home');
-
-      }
 
     }
 
