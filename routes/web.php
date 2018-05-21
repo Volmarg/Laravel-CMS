@@ -61,3 +61,6 @@ Route::get('/menu','MenuController@view');
 Route::post('/menu-edit','MenuController@edit');
 #--------------- Ajax Controllers
 Route::get('/ajaxUpdateMenu','ajaxUpdate@menuUpdate');
+
+#-------------- test routes
+include_once 'paths/tests.php';

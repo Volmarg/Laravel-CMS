@@ -12,19 +12,27 @@ class MenuController extends Controller
   public function view(){
     $allPosts=post::all();
 
+
     return view('partials/admin/menu',compact('menuElements','allPosts'));
 
   }
 
-  public function edit(){
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function edit(){
 
     $menus=new menu();
+
+
 
 
 #dd($_POST);
     $sortCounter=0;
     foreach($_POST as $id => $oneInput){
       if($id==0){continue;}
+
+
 
       elseif($oneInput=='false'){
         $menus->where('id',$id)->delete();
