@@ -28,12 +28,16 @@
           {{-- but print only if given element doesnt have a parent so it's main menu element --}}
           @if ($lvl_1->parentID=='-1')
             <li class="ui-state-default"><div><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
-              <input type="hidden" name="{{$lvl_1->id}}" value="true" /><button class="removeMenuElement">[-]</button>
+              <input type="hidden" name="{{$lvl_1->id}}" value="true" />
+                <input type="hidden" name="level[{{$lvl_1->id}}]" value="1"/>
+                <button class="removeMenuElement">[-]</button>
               {{-- Now for each element we need to check if there is any element which parent id is eq to this one id --}}
               <ol>
                 @foreach ($menuElements as $key_ => $lvl_2)
                     @if ($lvl_1->id==$lvl_2->parentID)
-                      <li><div><span class="menuConfigElement">{{$lvl_2->name}}</span> <input type="hidden" name="{{$lvl_2->id}}" value="true" /><button class="removeMenuElement">[-]</button></div></li>
+                      <li><div><span class="menuConfigElement">{{$lvl_2->name}}</span> <input type="hidden" name="{{$lvl_2->id}}" value="true" />
+                          <input type="hidden" name="level[{{$lvl_2->id}}]" value="2"/>
+                          <button class="removeMenuElement">[-]</button></div></li>
 
                     @endif
                 @endforeach

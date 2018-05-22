@@ -36,6 +36,15 @@ function editMenu(){
       +'<input type="hidden" value="'+link.attr('href')+'" name="'+lastID+'[]"/></div></li>');
     })
   }
+
+  //changing depth on hidden input so it will be passed to DB
+    this.depthChangeOnRelocation=function(element){
+
+    // TODO: need to figure out how to call currently dragged item and add depths
+
+      let currLevel=$(element).find('input').first().attr('name');
+      alert(currLevel);
+    }
 }
 
 

@@ -19,23 +19,23 @@
   <div class="container">
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
-<!--                        !-->
-<form class="" action="/posting" method="post">
-  {{csrf_field()}}
 
- <div class="form-group">
-   <label for="name">Post name</label>
-   <input type="text" class="form-control" id="name" name="title" value="{{$post->title}}">
- </div>
- <div class="form-group">
-   <input type="hidden" class="form-control" id="name" name="post_id" value="{{$post->id}}">
- </div>
- <div class="form-group">
-   <label for="body">Post body</label>
-   <textarea class="form-control" id="textAreaTinyMce" name="body" value="">{{$post->body}}</textarea>
- </div>
- <button type="submit" class="btn btn-default">Submit</button>
-</form>
+            <!-- TODO: Later add validation in request controller !-->
+          {!! Form::open(['url'=>'/posting', 'method'=>'post']) !!}
+              <div class="form-group">
+                  {!!  Form::label('name','Post name') !!}
+                  {!!  Form::text('title',$post->title,['class'=>'form-control']) !!}
+              </div>
+              <div class="form-group">
+                  {!! Form::hidden('post_id',$post->id,['class'=>'form-control']) !!}
+              </div>
+              <div class="form-group">
+                  {!! Form::label('body','Post body') !!}
+                  {!! Form::textarea('body',$post->body,['class'=>'form-control','id'=>'textAreaTinyMce']) !!}
+              </div>
+                  {!! Form::submit('Submit',['class'=>'btn btn-default']) !!}
+          {!! Form::close() !!}
+<!--                        !-->
 
 <hr><hr>
 @if ($errors)
