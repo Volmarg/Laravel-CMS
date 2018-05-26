@@ -7,8 +7,8 @@ function jqInitializers(){
       items: 'li',
       toleranceElement: '> div',
         maxLevels:2,
-        relocate: function(){
-            menu.depthChangeOnRelocation(this);
+        change: function(){
+            menu.depthChangeOnRelocation(event);
         }
     });
   }

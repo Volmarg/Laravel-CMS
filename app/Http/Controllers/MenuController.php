@@ -23,36 +23,37 @@ class MenuController extends Controller
     public function edit(){
 
     $menus=new menu();
-
-
-
-
-#    dd($_POST);
+    dd($_POST);
+    #removing/changing depth on elements
     $sortCounter=0;
-    foreach($_POST as $id => $oneInput){
-      if($id==0){continue;}
+    foreach($_POST['state'] as $id => $oneInput){
 
-
-
-      elseif($oneInput=='false'){
+     if($_POST['state'][$id]=='false'){
         $menus->where('id',$id)->delete();
 
-      }elseif($oneInput=='true'){
+      }elseif($_POST['state'][$id]=='true'){
         $menus->where('id',$id)->update([
           'sortOder'=>$sortCounter
-        ]);
-      }else{
-
-        #checking how many elements are in DB and post
-        $sizeDB=$menus->max('id');
-        $sizePOST=count($_POST);
-
-        $menus->insert([
-          'name'=>$_POST[$id][0], 'slug'=>$_POST[$id][1], 'depth'=>'1','parentID'=>'-1','sortOder'=>$sortCounter
         ]);
       }
       $sortCounter++;
     }
+
+    #For adding new items into DB
+    foreach($_POST as $id => $oneInput) {
+
+        if($id!='state' && $id!='_token' && $id!='level') {
+            #checking how many elements are in DB and post
+            $sizeDB = $menus->max('id');
+            $sizePOST = count($_POST);
+
+            $menus->insert([
+                'name' => $oneInput[0], 'slug' => $oneInput[1], 'depth' => $oneInput[2], 'parentID' => '-1', 'sortOder' => $sortCounter
+            ]);
+        }
+    }
+
+
 
     return redirect($_SERVER['HTTP_REFERER']);
   }

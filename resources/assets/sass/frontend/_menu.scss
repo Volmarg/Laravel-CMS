@@ -1,0 +1,63 @@
+// frontpage menu //
+
+ul.menuFront{
+  font-weight:bold;
+  margin-right:150px;
+
+  li{
+    position: relative;
+
+    &:hover{
+      .sub_menu{
+        display:block;
+        position:absolute;
+        right:0px;
+        top:20px;
+
+        li{
+          display:block;
+        }
+      }
+    }
+  }
+
+  li+li{
+    margin-left:10px !important;
+  }
+
+  .dropdown{
+
+    ul{
+      width:50px;
+      display:none;
+      left: -34px;
+      margin-left: 0px;
+      position: absolute;
+      top: 18px;
+      li{
+        list-style-type: block;
+        position:relative;
+      }
+
+    }
+  }
+
+  .dropdown:hover{
+    ul{
+      display:block;
+    }
+  }
+
+  li{
+    display:inline;
+  }
+
+  a{
+    text-decoration: none;
+    color:black;
+  }
+
+  .sub_menu{
+    display:none;
+  }
+}
