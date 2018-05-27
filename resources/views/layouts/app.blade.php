@@ -104,10 +104,17 @@
                                 </ul>
 
                             </li>
-                            <li>
-                              <a href="/users" class="dropdown-toggle" >
-                                  Users
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                  Users<span class="caret"></span>
                               </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{url('/users')}} ">Manage users</a>
+                                        <a href="{{url('/users-privilege')}} ">Privilege</a>
+                                    </li>
+
+                                </ul>
                             </li>
                             <li>
                               <a href="/menu" class="dropdown-toggle" >

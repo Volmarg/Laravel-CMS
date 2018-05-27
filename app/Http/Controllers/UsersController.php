@@ -31,7 +31,7 @@ class UsersController extends Controller
         return redirect($_SERVER['HTTP_REFERER']);
     }
 
-    public function changePrivilage(Request $request){
+    public function changeUserType(Request $request){
 
     #TO DO
       # prevent from chaning self privilages and other users on same level?
@@ -47,6 +47,11 @@ class UsersController extends Controller
       }
 
       return redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function showPrivilege(){
+
+        return view('auth.users.usersPrivilege');
     }
 
     private function filterInputsName($inputs,$filterBy){
