@@ -12,15 +12,7 @@
     <script src="{{asset('js/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script src="{{asset('js/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
-    <script src="{{asset('js/jquery.mjs.nestedSortable.js')}}"></script>
 
-    </script>
-    <script>
-    $( function() {
-      $( "#sortable" ).sortable();
-      $( "#sortable" ).disableSelection();
-    } );
-    </script>
     @yield('scripts')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
