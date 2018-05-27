@@ -5,16 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\post;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\postValidation;
 
 class postingController extends Controller
 {
-    public function create(){
-
-
-
-      $this->validate(request(),[
-      'title'=>'required',
-      'body'=>'required']);
+    public function create(postValidation $request){
 
       $db=new post();
       $db->title=request('title');

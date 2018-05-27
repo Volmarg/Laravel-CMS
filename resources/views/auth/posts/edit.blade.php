@@ -20,7 +20,6 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
 
-            <!-- TODO: Later add validation in request controller !-->
           {!! Form::open(['url'=>'/posting', 'method'=>'post']) !!}
               <div class="form-group">
                   {!!  Form::label('name','Post name') !!}
@@ -35,7 +34,6 @@
               </div>
                   {!! Form::submit('Submit',['class'=>'btn btn-default']) !!}
           {!! Form::close() !!}
-<!--                        !-->
 
 <hr><hr>
 @if ($errors)

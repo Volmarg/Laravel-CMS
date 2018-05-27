@@ -23,7 +23,7 @@ class MenuController extends Controller
     public function edit(){
 
     $menus=new menu();
-    dd($_POST);
+    #dd($_POST);
     #removing/changing depth on elements
     $sortCounter=0;
     foreach($_POST['state'] as $id => $oneInput){
