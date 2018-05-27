@@ -11,59 +11,17 @@
 |
 */
 
-/*
-sprzatnac controllery w katalogu controllers, ktore od czegu np. view/ kontrola zapisu itp
-*/
-
-Route::domain('admin.localhost')->group(function(){
-  Route::get('/', 'frontController@subdomain');
-});
-Route::get('/', 'frontController@posts');
-
-
-#--------------- posts ctreation middleware
-Route::put('/posting','postingController@create');
-Route::post('/posting','postingController@edit');
-Route::get('/posts/remove/{slug}','postingController@remove');
-
+include_once 'paths\subdomainTest.php';
+#--------------- posts
+include_once 'paths\posts.php';
 #-------------- Authorization controllers
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
-#---------------- posts creation controllers
-Route::get('/posts/create','PostsController@create');
-Route::get('/posts/manage','PostsController@manage');
-Route::get('/posts/edit/{slug}','PostsController@edit');
-
-#---------------- showPosts
-Route::get('/page/post/{slug}','PostsController@view');
-
 #--------------- uploading controllers
-
-Route::prefix('media')->group(function(){
-
-  Route::get('/upload','uploadController@send');
-  Route::post('/uploading','uploadController@save');
-
-#--------------- media manager controllers
-  Route::get('library','mediaLibraryController@view');
-  Route::get('process','mediaLibraryController@remove');
-});
-
-
+include_once 'paths\uploading.php';
 #--------------- users manager Controllers
-Route::middleware(['superAdmin'])->group(function (){
-
-    Route::get('/users','UsersController@show');
-    Route::get('/user-remove/{slug}','UsersController@removeUser');
-    Route::post('/users-change-privilage','UsersController@changePrivilage');
-
-});
+include_once 'paths\users.php';
 #--------------- menu manager Controllers
-Route::get('/menu','MenuController@view');
-Route::post('/menu-edit','MenuController@edit');
+include_once 'paths\menu.php';
 #--------------- Ajax Controllers
-Route::get('/ajaxUpdateMenu','ajaxUpdate@menuUpdate');
-
-#-------------- test routes
-include_once 'paths/tests.php';
+include_once 'paths\ajax.php';

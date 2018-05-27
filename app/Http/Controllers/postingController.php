@@ -18,7 +18,7 @@ class postingController extends Controller
       $db->slug=str_slug(request('title'),'-');
       $db->save();
 
-      return redirect('/posts/create');
+      return back();
     }
 
     public function edit(){
@@ -34,13 +34,13 @@ class postingController extends Controller
            'body'=>request('body')
          ]);
 
-      return redirect('/');
+      return back();
     }
 
     public function remove($slug){
 
       post::where('slug',$slug)->delete();
-      return redirect($_SERVER['HTTP_REFERER']);
+      return back();
 
     }
 }

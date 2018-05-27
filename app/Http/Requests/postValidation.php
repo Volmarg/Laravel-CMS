@@ -24,8 +24,8 @@ class postValidation extends FormRequest
     public function rules()
     {
         return [
-            'Post name'=>'required',
-            'Post body'=>'required',
+            'title'=>'required',
+            'body'=>'required',
         ];
     }
 }
