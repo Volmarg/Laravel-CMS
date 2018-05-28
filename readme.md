@@ -5,12 +5,13 @@ Creating Laravel based CMS in order to learn basics of this framework first proj
 <ul>
 <li>creating posts,</li>
 <li>editing posts,</li>
+<li>displaying post as single page, </li>
 <li>adding users,</li>
+<li>creating & removing users,</li>
 <li>authentication,</li>
-<li>changing users privilages,</li>
-<li>uploading files,</li>
-<li>menu editing</li>
-<li>removing uploaded files.</li>
+<li>changing users role,</li>
+<li>uploading & removing files,</li>
+<li>partial menu editing.</li>
 </ul>
 
 <img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen.jpg?raw=true">
