@@ -110,8 +110,8 @@
                               </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{url('/users')}} ">Manage users</a>
-                                        <a href="{{url('/users-privilege')}} ">Privilege</a>
+                                        <a href="{{url('/users/manage')}} ">Manage users</a>
+                                        <a href="{{url('/users/privilege')}} ">Privilege</a>
                                     </li>
 
                                 </ul>

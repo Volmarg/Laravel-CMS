@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\ViewComposers;
+namespace App\Http\ViewComposers\providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;

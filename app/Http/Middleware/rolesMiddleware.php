@@ -18,17 +18,18 @@ class rolesMiddleware
      */
     public function handle($request, Closure $next,$type)
     {
-        #Todo: checkout why $type var is cousing errors
-        //if($type=='SuperAdmin'){
-            $user=auth()->user()->accountType;
-            if($user=="superAdmin"){
-                return $next($request);
-            }else{
-                dd("Invalid user");
-            }
-        //}
+        $user=auth()->user()->accountType;
 
-        return 'Error! User type missing. ??';
+        if($type=='superAdmin' && $user=="superAdmin"){
+            return $next($request);
+        }elseif($type=='admin' && $user=="admin"){
+            return $next($request);
+        }elseif($type=='normal' && $user=="normal"){
+            return $next($request);
+        }else{
+            return back();
+        }
+
 
     }
 }

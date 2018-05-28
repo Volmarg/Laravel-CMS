@@ -7,7 +7,7 @@
   <div class="wrapper usersWrap">
 
     <h1>Users data here</h1>
-<form action="/users-change-privilage" method="POST">
+<form action="/users/changeUserType" method="POST">
     <table>
       <thead>
 
@@ -35,7 +35,7 @@
 
                 @endforeach
             </select></td>
-            <td><a href="user-remove/{{$value->name}}">Remove</a></td>
+            <td><a href="/users/remove/{{$value->name}}">Remove</a></td>
         </tr>
           @endforeach
 

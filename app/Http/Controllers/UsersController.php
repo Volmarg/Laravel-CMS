@@ -17,12 +17,8 @@ class UsersController extends Controller
 
     public function show(){
 
-      $allUsers=users::all();
-      $accountTypes=usersTypes::all();
-
-      return view('auth/users/view',compact('allUsers','accountTypes'));
-
-
+      return view('auth/users/view');
+      
     }
 
     public function removeUser($sluger){
