@@ -4,13 +4,19 @@
 
     <section classs="mainWrap" style="display:flex;justify-content:space-around;">
 
-        <div class="wrapper usersWrap">
+        <div class="wrapper usersWrap usersPrivilege">
 
             <h1>Users data here</h1>
             <form action="/users/changeUserType" method="POST">
                 <table>
                     <thead>
-
+                        <tr>
+                            <th>No.</th>
+                            <th>User.</th>
+                            @foreach($privileges[0] as $name=>$privilege)
+                                <th>{{$name}}</th>
+                            @endforeach
+                        </tr>
                     </thead>
                     <tbody>
 
@@ -19,25 +25,20 @@
                             <tr class="activeUser">
                         @else
                             <tr>
-                                @endif
+                        @endif
                                 <td>{{$key}}.</td>
                                 <td><b>{{$value->name}}</b></td>
-                                <td><b>{{$value->accountType}}</b></td>
-                                <td><select name="accountType-select-{{$value->name}}">
-                                        @foreach($accountTypes as $key => $type)
-                                            <option
-                                                    @if ($value->accountType==$type->type)
-                                                    selected
-                                                    @endif
-                                            >
-                                                {{$type->type}}
-                                            </option>
+                                @foreach($privileges[$key] as  $oneUser)
+                                        @if($oneUser=='enable')
+                                            <th><input type="checkbox" checked/> </th>
+                                        @else
+                                            <th><input type="checkbox"/> </th>
+                                        @endif
 
-                                        @endforeach
-                                    </select></td>
-                                <td><a href="/users/remove/{{$value->name}}">Remove</a></td>
+                                @endforeach
                             </tr>
-                            @endforeach
+
+                    @endforeach
 
                     </tbody>
                 </table>

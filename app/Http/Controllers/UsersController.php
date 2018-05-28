@@ -18,7 +18,7 @@ class UsersController extends Controller
     public function show(){
 
       return view('auth/users/view');
-      
+
     }
 
     public function removeUser($sluger){

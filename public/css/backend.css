@@ -11,3 +11,9 @@
   color: red;
 }
 
+.usersPrivilege td,
+.usersPrivilege th {
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  padding: 4px;
+}
+
