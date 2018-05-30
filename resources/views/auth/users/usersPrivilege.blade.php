@@ -7,7 +7,7 @@
         <div class="wrapper usersWrap usersPrivilege">
 
             <h1>Users data here</h1>
-            <form action="/users/changeUserType" method="POST">
+            <form action="/users/changeUserPrivileges" method="POST">
                 <table>
                     <thead>
                         <tr>
@@ -28,11 +28,13 @@
                         @endif
                                 <td>{{$key}}.</td>
                                 <td><b>{{$value->name}}</b></td>
-                                @foreach($privileges[$key] as  $oneUser)
+                                @foreach($privileges[$key] as  $count=>$oneUser)
                                         @if($oneUser=='enable')
-                                            <th><input type="checkbox" checked/> </th>
+                                            <th><input type="checkbox" checked name="pivilegeSingle{{$key}}[{{$count}}]"/> </th>
                                         @else
-                                            <th><input type="checkbox"/> </th>
+                                            <th><input type="checkbox" name="pivilegeSingle{{$key}}[{{$count}}]" value="off"/>
+                                                <input type="hidden" name="pivilegeOffSingle{{$key}}[{{$count}}]" value="off"/>
+                                            </th>
                                         @endif
 
                                 @endforeach
@@ -46,6 +48,7 @@
 
                 {!! csrf_field() !!}
                 <input type="submit" name="submited" value="Update" class="btn btn-warning">
+                <input type="hidden" value="{{$names}}" name="privNames" />
             </form>
 
 

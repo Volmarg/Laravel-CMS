@@ -45,6 +45,79 @@ class UsersController extends Controller
       return redirect($_SERVER['HTTP_REFERER']);
     }
 
+    public function changeUserPrivileges(Request $request){
+
+        $allUsersJson=$this->jsonPrivilegesGenerator();
+        #$parsedSettings=json_decode($allUsersJson);
+
+        dd($allUsersJson);
+
+
+        return back();
+    }
+
+    private function jsonPrivilegesGenerator(){
+        #prepare counters for iterations
+        $json='{';
+        //all users
+        $x=0;
+        $usersSize=0;
+
+        foreach($_POST as $postName=>$singleUser){
+            if(strstr($postName,'pivilege')){
+                //$len+=count($singleUser);
+                $usersSize++;
+            }
+        }
+
+
+        #start iterating over all result post
+        foreach($_POST as $postName=>$singleUser){
+
+            $i=0;
+            if(strstr($postName,'pivilegeSingle')){#for checked checkboxes
+                $json.='"'.$x.'":{';
+                foreach($singleUser as $name=>$value){
+                    $len=count($singleUser)-1;
+                    if($singleUser[$name]=='on'){
+                        $json.='"'.$name.'"'.':'.'"on"';
+                    }
+
+                    if($i<$len){
+                        $json.=',';
+                    }
+                    $i++;
+                }#for checkboxes that have been unchecked
+            }elseif(strstr($postName,'pivilegeOffSingle')){
+                $json.='"'.$x.'":{';
+                foreach($singleUser as $name=>$value){
+                    $len=count($singleUser)-1;
+                    if($singleUser[$name]=='off'){
+                        $json.='"'.$name.'"'.':'.'"off"';
+                    }
+
+                    if($i<$len){
+                        $json.=',';
+                    }
+                    $i++;
+                }
+            }else{
+                $x++;
+                continue;
+            }
+
+            $x++;
+            if($x<$usersSize){
+                $json.='},';
+            }else{
+                $json.='}';
+            }
+        }
+        $json.='}';
+
+        return $json;
+    }
+
     public function showPrivilege(){
 
         return view('auth.users.usersPrivilege');
