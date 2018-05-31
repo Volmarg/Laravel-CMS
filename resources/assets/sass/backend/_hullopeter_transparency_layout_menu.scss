@@ -1,0 +1,414 @@
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+@mixin transition-max-height {
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      transition: max-height .5s #{.65 + $i * .02}s ease-in;
+    }
+  }
+}
+
+@mixin media-sm {
+  @media (min-width: 650px) {
+    @content;
+  }
+}
+
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+@function getColor($color) {
+  @if (lightness($main) > 50) {
+    @return rgba(black, .8);
+  } @else {
+    @return rgba(white, .8);
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+$red: random(256)-1;
+$green: random(256)-1;
+$blue: random(256)-1;
+
+$main: rgb($red, $green, $blue);
+$main: #0070cc;
+$dark: mix(black, $main, 20%);
+
+// select font color
+$text: getColor($main);
+%sidebar-hover {
+  @include alpha-attribute('background-color', rgba($main, 0.6), white);
+}
+
+.primnav {
+  position: fixed;
+  height: 58px;
+  width: 100vw;
+  font-size: .8em;
+  text-transform: uppercase;
+  background-color: lighten($main, 5%);
+  display: flex;
+  flex-direction: column;
+  transition: height 246ms .5s ease;
+  padding-top: 58px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-top: 1px solid $text;
+  box-sizing: border-box;
+  z-index: 1;
+  @include media-sm {
+    height: 100vh;
+    width: 58px;
+    transition: width 246ms .5s ease;
+  }
+
+  > ul {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  li {
+    font-weight: 400;
+    position: relative;
+    &:hover {
+      @extend %sidebar-hover;
+    }
+    .tag {
+      @include alpha-attribute('background-color', rgba($main, .8), black);
+      color: $text;
+      @include alpha-attribute('color', rgba($text, .9), black);
+      padding: 0 .5em;
+      border-radius: 2em;
+      margin-left: auto;
+      margin-right: .75em;
+    }
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      @include alpha-attribute('color', rgba($text, 0.8), white);
+      text-decoration: none;
+    }
+
+  }
+  .icon {
+    height: 20px;
+    flex-shrink: 0;
+    width: 20px;
+    padding: 19px;
+    margin-right: 5px;
+    padding-bottom: 15px;
+    @include alpha-attribute('color', rgba($text, .9), black);
+  }
+  expand:hover {
+    @extend %sidebar-hover;
+  }
+}
+
+.secnav {
+  margin-left: 63px;
+  border-left: 1px solid black;
+  @include alpha-attribute('border-left-color', rgba($main, .9), black);
+  overflow: hidden;
+
+  li {
+    @include alpha-attribute('color', rgba($text, .9), black);
+    max-height: 100px;
+    transition: max-height .1s;
+
+    @include media-sm {
+      max-height: 0px;
+      transition: max-height .5s .5s;
+    }
+
+    a {
+      text-transform: initial;
+      display: block;
+      color: inherit;
+      padding: .75em 10px;
+    }
+  }
+}
+
+user {
+  padding: 5px;
+  padding-bottom: 3px;
+  flex-shrink: 0;
+  position: fixed;
+  font-weight: 400;
+  right: 0;
+  @include alpha-attribute('color', rgba($text, 0.9), white);
+  z-index: 99999;
+
+  > section {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    > section {
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+    }
+  }
+  img {
+    height: 51px;
+    width: 48px;
+    clip-path: circle(50% at 50% 50%);
+    margin-left: 10px;
+    min-height: 51px;
+    min-width: 48px;
+    align-items: flex-end;
+  }
+  name {
+    font-weight: 400;
+  }
+  actions {
+    padding: .1em 0;
+    font-size: .8em;
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+      padding: 0 .5em;
+      color: $text;
+      text-decoration: none;
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+content {
+  font-family: 'Pacifico', cursive;
+  color: rgba($text, .9);
+  font-size: 8vw;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $main;
+  height: 100%;
+  padding-top: 58px;
+  box-sizing: border-box;
+  position: relative;
+  @include media-sm {
+    padding-left: 58px;
+    padding-top: 0;
+  }
+}
+
+.features {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  li {
+    width: 100%;
+    text-align: center;
+    padding: .25em;
+  }
+}
+
+
+/**
+    SCROLLBAR STYLE FOR IE
+*/
+
+body {
+  scrollbar-base-color: $main;
+  scrollbar-3dlight-color: #fff;
+  scrollbar-highlight-color: $main;
+  scrollbar-track-color: $main;
+  scrollbar-arrow-color: $main;
+  scrollbar-shadow-color: $main;
+  scrollbar-dark-shadow-color: $main;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.icon {
+  display: inline-block;
+  width: 5vw;
+  height: 4vw;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+$hamburger: $text;
+
+/** hamburger */
+
+input.hamburger {
+  display: none;
+  &:checked {
+    & ~ nav.primnav {
+      height: 100vh;
+      @include media-sm {
+        width: 275px;
+      }
+
+      .secnav > li {
+        @include media-sm {
+          @include transition-max-height;
+          max-height: 100px;
+        }
+      }
+    }
+    & ~ label {
+      > i {
+        background-color: transparent;
+        transform: rotate(90deg);
+        &:before {
+          transform: translate(-50%, -50%) rotate(315deg);
+        }
+        &:after {
+          transform: translate(-50%, -50%) rotate(-315deg);
+        }
+      }
+      close {
+        color: $hamburger;
+        width: 100%;
+      }
+      open {
+        color: rgba(0, 0, 0, 0);
+        width: 0;
+      }
+    }
+  }
+}
+
+label.hamburger {
+  z-index: 9999;
+  position: relative;
+  display: block;
+  height: 24px;
+  width: 24px;
+  &:hover {
+    cursor: pointer;
+  }
+  text {
+    close,
+    open {
+      text-transform: uppercase;
+      align-text: center;
+      position: absolute;
+      transform: translateY(24px);
+      text-align: center;
+      overflow: hidden;
+      transition: width .25s .35s, color .45s .35s;
+      font-size: 6px;
+    }
+    close {
+      color: $text;
+      right: 0;
+      width: 0;
+    }
+    open {
+      color: $hamburger;
+      width: 100%;
+    }
+  }
+  > i {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    background-color: $hamburger;
+    pointer-events: auto;
+    transition-duration: .35s;
+    transition-delay: .35s;
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      left: 50%;
+      background-color: $hamburger;
+      content: "";
+      transition: transform 0.35s;
+      transform-origin: 50% 50%;
+    }
+    &:before {
+      transform: translate(-50%, -7px);
+    }
+    &:after {
+      transform: translate(-50%, 7px);
+    }
+  }
+}
+
+label.hamburger {
+  position: fixed;
+  top: 14px;
+  left: 17px;
+}
+
+.tabs {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  position: fixed;
+  top: 58px;
+  left: 0;
+  background-color: lighten($main, 5%);
+  border-bottom: 1px solid darken($main, 5%);
+  width: 100vw;
+  box-sizing: border-box;
+
+  @include media-sm {
+    padding-left: calc(58px + .5rem);
+    top: calc(58px - 3em);
+    background-color: $main;
+    border: 0;
+  }
+
+  > ul {
+    display: flex;
+    justify-content: space-around;
+    overflow-x: auto;
+    flex-wrap: wrap;
+
+    @include media-sm {
+      justify-content: flex-start;
+    }
+  }
+
+  .tab {
+    font-weight: 300;
+    font-size: .7em;
+    padding: 1em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: block;
+    color: $text;
+    text-decoration: none;
+
+    &:hover {
+      background-color: darken($main, 5%);
+      cursor: pointer;
+    }
+  }
+}

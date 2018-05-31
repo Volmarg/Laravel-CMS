@@ -32,7 +32,7 @@ class UsersController extends Controller
 
     #TO DO
       # prevent from chaning self privilages and other users on same level?
-
+      # when changed, also change the privilege column with - kind of default privileges
     #first get the data sent from form
       $allUsersInputs=$request->all();
       $filteredSelects=$this->filterInputsName($allUsersInputs,'accountType-select-');
