@@ -1,5 +1,5 @@
 <?php
-Route::middleware(['superAdmin:superAdmin'])->prefix('users')->group(function (){
+Route::prefix('users')->group(function (){
 
     Route::get('/manage','UsersController@show');
     Route::get('/remove/{slug}','UsersController@removeUser');

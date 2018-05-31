@@ -11,17 +11,22 @@
 |
 */
 
-include_once 'paths\subdomainTest.php';
-#--------------- posts
-include_once 'paths\posts.php';
 #-------------- Authorization controllers
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-#--------------- uploading controllers
-include_once 'paths\uploading.php';
-#--------------- users manager Controllers
-include_once 'paths\users.php';
-#--------------- menu manager Controllers
-include_once 'paths\menu.php';
-#--------------- Ajax Controllers
-include_once 'paths\ajax.php';
+
+Route::group(['middleware'=>['web','privileges']],function(){
+
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
+    #--------------- tests
+        include_once 'paths\subdomainTest.php';
+    #--------------- posts
+        include_once 'paths\posts.php';
+    #--------------- uploading controllers
+        include_once 'paths\uploading.php';
+    #--------------- users manager Controllers
+        include_once 'paths\users.php';
+    #--------------- menu manager Controllers
+        include_once 'paths\menu.php';
+    #--------------- Ajax Controllers
+        include_once 'paths\ajax.php';
+});
