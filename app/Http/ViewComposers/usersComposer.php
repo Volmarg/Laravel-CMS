@@ -15,17 +15,21 @@ class usersComposer {
         $privileges=array();
 
         foreach($dbJsonPrivilege as $singleUser){
-            array_push($privileges,json_decode($singleUser['privilege']));
+            $arr=json_decode($singleUser['privilege'],true);
+            array_push($privileges,$arr);
         }
 
         #get privileges names as array
         $names=array();
         foreach($privileges as $id=>$oneUser){
             foreach($oneUser as $name=>$singlePrivilege){
+
+                krsort($oneUser);
                 array_push($names,$name);
             }
             break;
         }
+        rsort($names);
         $names=json_encode($names);
 
         $allUsers=users::all();

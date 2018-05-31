@@ -30,9 +30,9 @@
                                 <td><b>{{$value->name}}</b></td>
                                 @foreach($privileges[$key] as  $count=>$oneUser)
                                         @if($oneUser=='enable')
-                                            <th><input type="checkbox" checked name="pivilegeSingle{{$key}}[{{$count}}]"/> </th>
+                                            <th><input type="checkbox" checked name="pivilegeSingle{{$key}}[{{$count}}]" class="stateMark" data-name="{{$key}}[{{$count}}]"/> </th>
                                         @else
-                                            <th><input type="checkbox" name="pivilegeSingle{{$key}}[{{$count}}]" value="off"/>
+                                            <th><input type="checkbox" name="pivilegeSingle{{$key}}[{{$count}}]" class="stateMark" data-name="{{$key}}[{{$count}}]"/>
                                                 <input type="hidden" name="pivilegeOffSingle{{$key}}[{{$count}}]" value="off"/>
                                             </th>
                                         @endif

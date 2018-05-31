@@ -137,6 +137,7 @@
     <script src="{{ asset('js/ajax.js')}}"></script>
     <script src="{{ asset('js/menuEdit.js')}}"></script>
     <script src="{{ asset('js/jqUiCalls.js')}}"></script>
+    <script src="{{ asset('js/privilegesEdit.js')}}"></script>
     <script src="{{ asset('js/initializer.js')}}"></script>
 
 

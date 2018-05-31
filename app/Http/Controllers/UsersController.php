@@ -7,6 +7,7 @@ use App\users;
 use App\usersTypes;
 use Gate;
 use Request as facadeRequest;
+use App\usersPrivilages;
 class UsersController extends Controller
 {
 
@@ -47,10 +48,50 @@ class UsersController extends Controller
 
     public function changeUserPrivileges(Request $request){
 
+        #This returns arrays of settings for users
         $allUsersJson=$this->jsonPrivilegesGenerator();
-        #$parsedSettings=json_decode($allUsersJson);
+        $parsedSettings=json_decode($allUsersJson,true);
 
-        dd($allUsersJson);
+        #now create single json for each users. Since returned on/off options are split between arrays they need to me merged
+        $stringNames=preg_replace('#["\[\]]#','',$_POST['privNames']);
+        $names=explode(',',$stringNames);
+        $counted=count($names);
+        $merged=array();
+        $skip=false;
+        $updateIterator=1;
+        foreach($parsedSettings as $id=>$one){
+            if($skip==true){ #For merging 2 arrays into json and skipping next iteration
+                $skip=false;
+                continue;
+            };
+
+            #go over the arrays that need to be merged
+            #check if this one array is smaller than it should be
+            if(count($one)!=$counted){
+                $skip=true;
+
+                foreach ($one as $name=> $option){
+                    $merged[$name]=$option;
+                }
+                foreach ($parsedSettings[$id+1] as $name=> $option){
+                    $merged[$name]=$option;
+                }
+
+                krsort($merged,SORT_STRING );
+                $singleJson=json_encode($merged);
+
+                usersPrivilages::where('id',$updateIterator)->update(['privilege'=>$singleJson]);
+                $updateIterator++;
+            }else{ #for case with normal arrays - full sized
+                $skip=false;
+                krsort($one,SORT_STRING );
+                $singleJson=json_encode($one);
+
+                usersPrivilages::where('id',$updateIterator)->update(['privilege'=>$singleJson]);
+                $updateIterator++;
+            }
+
+        }
 
 
         return back();
@@ -80,7 +121,7 @@ class UsersController extends Controller
                 foreach($singleUser as $name=>$value){
                     $len=count($singleUser)-1;
                     if($singleUser[$name]=='on'){
-                        $json.='"'.$name.'"'.':'.'"on"';
+                        $json.='"'.$name.'"'.':'.'"enable"';
                     }
 
                     if($i<$len){
@@ -93,7 +134,7 @@ class UsersController extends Controller
                 foreach($singleUser as $name=>$value){
                     $len=count($singleUser)-1;
                     if($singleUser[$name]=='off'){
-                        $json.='"'.$name.'"'.':'.'"off"';
+                        $json.='"'.$name.'"'.':'.'"disabled"';
                     }
 
                     if($i<$len){
