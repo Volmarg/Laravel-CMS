@@ -55,10 +55,11 @@ class UsersController extends Controller
         #now create single json for each users. Since returned on/off options are split between arrays they need to me merged
         $stringNames=preg_replace('#["\[\]]#','',$_POST['privNames']);
         $names=explode(',',$stringNames);
-        $counted=count($names);
-        $merged=array();
-        $skip=false;
-        $updateIterator=1;
+        $counted=count($names);  #for checking how many elements are in given on/off array
+        $merged=array();         #created by merging off & on arrays
+        $skip=false;             #for skipping foreach iteration
+        $updateIterator=1;       #for database updating
+
         foreach($parsedSettings as $id=>$one){
             if($skip==true){ #For merging 2 arrays into json and skipping next iteration
                 $skip=false;
@@ -80,17 +81,14 @@ class UsersController extends Controller
                 krsort($merged,SORT_STRING );
                 $singleJson=json_encode($merged);
 
-                usersPrivilages::where('id',$updateIterator)->update(['privilege'=>$singleJson]);
-                $updateIterator++;
             }else{ #for case with normal arrays - full sized
                 $skip=false;
                 krsort($one,SORT_STRING );
                 $singleJson=json_encode($one);
 
-                usersPrivilages::where('id',$updateIterator)->update(['privilege'=>$singleJson]);
-                $updateIterator++;
             }
-
+            usersPrivilages::where('id',$updateIterator)->update(['privilege'=>$singleJson]);
+            $updateIterator++;
         }
 
 
@@ -98,19 +96,22 @@ class UsersController extends Controller
     }
 
     private function jsonPrivilegesGenerator(){
+        /* $len -> counts how many options are there (on/off), and it's used to create ',' on last json element
+         * $json-> general variable 'string' that in the end creates one big json string with all users data
+         * all arrays are associative since this helps generating json with privileges names
+        */
+
+        $json='{'; #starting wrapper
         #prepare counters for iterations
-        $json='{';
-        //all users
         $x=0;
         $usersSize=0;
 
+        #check how many users are there - this is used to generate ',' in json structure on last element
         foreach($_POST as $postName=>$singleUser){
             if(strstr($postName,'pivilege')){
-                //$len+=count($singleUser);
                 $usersSize++;
             }
         }
-
 
         #start iterating over all result post
         foreach($_POST as $postName=>$singleUser){
