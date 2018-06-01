@@ -98,11 +98,17 @@
         @auth
         <user id="user">
             <section>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg" />
+                <img src="
+                @if(Auth::user()->image)
+                        {{ Auth::user()->image }}
+                @else
+                         https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg
+                @endif
+                " />
                 <section>
 
                     <name>{{ Auth::user()->name }}</name>
-                    <actions><a href="#settings">settings</a> |
+                    <actions><a href="{{url('/user-settings/main-settings')}}">settings</a> |
                         <a href="{{ route('logout') }}"                                                                        onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">Logout
                         </a>

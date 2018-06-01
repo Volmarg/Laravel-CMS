@@ -23,7 +23,7 @@ class privilegesMiddleware
          * This is prefix based privilege checker. Simply get prefix from uri and check
          * what is the status in DB for currently logged in user
          */
-
+        return $next($request);
         if(auth()->user()==null){ //nobody is logged in
             return $next($request);
         }

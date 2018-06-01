@@ -104,12 +104,29 @@ class UsersController extends Controller
         return back();
     }
 
-
     public function showPrivilege(){
 
         return view('auth.users.usersPrivilege');
     }
 
+
+    public function settingsPanel(){
+
+
+        return view('auth.users.profileEdit');
+    }
+
+    public function userOptions(Request $request){
+
+        users::where('id',Auth()->user()->id)->update([
+            'name'=>$_POST['name'],
+            'email'=>$_POST['email'],
+            'image'=>$_POST['image'],
+            'password'=>bcrypt($_POST['password'])
+        ]);
+
+        return back();
+    }
 
     private function jsonPrivilegesGenerator(){
         /* $len -> counts how many options are there (on/off), and it's used to create ',' on last json element
