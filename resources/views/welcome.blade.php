@@ -72,6 +72,7 @@
         </style>
 
         <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/compiledPostsFront.css">
         @yield('scripts')
     </head>
     <body>

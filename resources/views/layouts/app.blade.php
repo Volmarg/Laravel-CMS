@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/css/backend.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/image-picker/image-picker.css">
+
 </head>
 <body>
 
