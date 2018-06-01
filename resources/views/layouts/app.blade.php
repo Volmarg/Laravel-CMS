@@ -95,10 +95,12 @@
         </nav>
 
         <!-- user right side !-->
+        @auth
         <user id="user">
             <section>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg" />
                 <section>
+
                     <name>{{ Auth::user()->name }}</name>
                     <actions><a href="#settings">settings</a> |
                         <a href="{{ route('logout') }}"                                                                        onclick="event.preventDefault();
@@ -114,6 +116,7 @@
                 </section>
             </section>
         </user>
+        @endauth
 
         <!-- ICONS?? !-->
 

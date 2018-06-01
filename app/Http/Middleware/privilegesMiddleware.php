@@ -24,11 +24,9 @@ class privilegesMiddleware
          * what is the status in DB for currently logged in user
          */
 
-        //TODO:
-        /* only one user works - arisiel: why for others there is a problem? Missing data in DB?
-        * need to make case when user is logged out so the request is passed forward anyway
-        */
-        return $next($request);
+        if(auth()->user()==null){ //nobody is logged in
+            return $next($request);
+        }
         #get page prefix - it's also set in route web.
         preg_match('#/([a-z]*)#',$_SERVER['REQUEST_URI'],$found);
         $prefix=$found[1];
@@ -39,16 +37,21 @@ class privilegesMiddleware
         $privileges=json_decode($privileges[0]->privilege,true);
 
         #check what is the status of privilege for current prefix
-        $status=($privileges[$prefix]=='enable'?true:false);
+        if(in_array($prefix,$privileges)){ //current url is not under any restrictions
+            $status=($privileges[$prefix]=='enable'?true:false);
 
 
-        if($status){
-            return $next($request);
+            if($status){
+                return $next($request);
+            }else{
+                echo '<h1>You are not allowed to enter this section</h1>';
+                echo '<a href="'.url()->previous().'" ><button class="btn">Go back</button></a>';
+                die();
+            }
         }else{
-            echo '<h1>You are not allowed to enter this section</h1>';
-            echo '<a href="'.url()->previous().'" ><button class="btn">Go back</button></a>';
-            die();
+            return $next($request);
         }
+
 
     }
 }
