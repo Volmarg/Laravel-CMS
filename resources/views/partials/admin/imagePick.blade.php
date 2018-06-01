@@ -7,7 +7,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <span class="close" >&times;</span>
-            <h2>Modal Header</h2>
+            <h2>Media library</h2>
         </div>
         <section class="mediaLibrary">
             <section class="gallery">

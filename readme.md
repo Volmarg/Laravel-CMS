@@ -16,6 +16,7 @@ Creating Laravel based CMS in order to learn basics of this framework first proj
 <li>authentication,</li>
 <li>changing users role,</li>
 <li>uploading & removing files,</li>
+<li>picking images from media lib. in post area,</li>
 <li>adding & editing seo meta title & description,</li>
 <li>basic user profile changes
     <ul>
@@ -31,6 +32,7 @@ Creating Laravel based CMS in order to learn basics of this framework first proj
 <h2>Used packages</h2>
 <li><a href="https://www.npmjs.com/package/livereload">Npm livereload</a> ,</li>
 <li><a href="https://www.npmjs.com/package/npm-watch">Npm watch</a>,</li>
+<li><a href="https://rvera.github.io/image-picker/">Image picker</a>,</li>
 
 <h2>Used tools</h2>
 <ul>
