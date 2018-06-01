@@ -1,9 +1,11 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p>
-Creating Laravel based CMS in order to learn basics of this framework first project ever. 
+Creating Laravel based CMS in order to learn about this framework. 
 
 <img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_1.png?raw=true">
+<br/><br/></br>
+<img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_2.png?raw=true">
 
 <h2>What works atm.</h2>
 
