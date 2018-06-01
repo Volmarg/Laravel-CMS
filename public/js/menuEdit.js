@@ -26,7 +26,7 @@ function editMenu() {
             var menuBuilder = $('.menuActiveElementsAdmin>ol');
 
             //add list element into menu and also input so it will be passed via form to the controler
-            menuBuilder.append('<li class="ui-state-default">' +
+            menuBuilder.append('<li class="">' +
                 '<div class="ui-sortable-handle">' +
                 '<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
                 '<span class="menuConfigElement">' + anchor.html() + '-' + link.attr('href') + '</span>'

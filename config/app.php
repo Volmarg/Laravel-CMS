@@ -182,6 +182,7 @@ return [
         App\Providers\ComposerServiceProvider::class,
         App\Http\ViewComposers\providers\ComposerServiceProvider::class,
         App\Http\ViewComposers\providers\commonDataServiceProvider::class,
+        App\Http\ViewComposers\providers\mediaLibraryServiceProvider::class,
     ],
 
     /*

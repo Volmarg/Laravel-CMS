@@ -12,6 +12,9 @@
     <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script src="{{asset('js/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
 
+    <script src="{{ asset('js/modals.js')}}"></script>
+    <script src="{{ asset('js/image-picker/image-picker.js')}}"></script>
+
     @yield('scripts')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -21,6 +24,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/backend.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/image-picker/image-picker.css">
 </head>
 <body>
 
@@ -181,6 +186,6 @@
     <script src="{{ asset('js/privilegesEdit.js')}}"></script>
     <script src="{{ asset('js/initializer.js')}}"></script>
     <script src="{{ asset('js/mediaLibrary.js')}}"></script>
-
+    <script src="{{ asset('js/image-picker.js')}}"></script>
 </body>
 </html>

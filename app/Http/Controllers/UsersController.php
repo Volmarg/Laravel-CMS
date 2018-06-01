@@ -117,13 +117,17 @@ class UsersController extends Controller
     }
 
     public function userOptions(Request $request){
-
         users::where('id',Auth()->user()->id)->update([
             'name'=>$_POST['name'],
             'email'=>$_POST['email'],
-            'image'=>$_POST['image'],
-            'password'=>bcrypt($_POST['password'])
+            'image'=>$_POST['image']
         ]);
+
+        if($_POST['password']!='' && $_POST['password']!=null){
+            users::where('id',Auth()->user()->id)->update([
+                'password'=>bcrypt($_POST['password'])
+            ]);
+        }
 
         return back();
     }

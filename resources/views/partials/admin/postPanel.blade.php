@@ -1,5 +1,8 @@
 
-            {!! Form::open(['url'=>'/posting/put', 'method'=>'post']) !!}
+            {!! Form::open(
+                ['url'=>(! empty($post->title) ? '/posting' : '/posting/put'),
+                'method'=>'post'])
+            !!}
             {{csrf_field()}}
             <div class="form-group">
                 {!!  Form::label('name','Post name') !!}

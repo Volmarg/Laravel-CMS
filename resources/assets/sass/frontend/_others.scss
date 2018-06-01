@@ -1,0 +1,12 @@
+#user img {
+  height: 51px;
+  width: 48px;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  /* margin-left: 10px; */
+  /* min-height: 51px; */
+  min-width: 48px;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}

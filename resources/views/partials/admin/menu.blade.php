@@ -27,7 +27,7 @@
         @foreach ($menuElements as $key => $lvl_1)
           {{-- but print only if given element doesnt have a parent so it's main menu element --}}
           @if ($lvl_1->parentID=='-1')
-            <li class="ui-state-default parentLvl1" data-id="{{$lvl_1->id}}" ><div><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
+            <li class="parentLvl1" data-id="{{$lvl_1->id}}" ><div><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="menuConfigElement">{{$lvl_1->name}} - {{$lvl_1->slug}}</span>
                 <input type="hidden" name="state[{{$lvl_1->id}}]" value="true" />
                 <input type="hidden" name="level[{{$lvl_1->id}}]" value="1" id="thisLevel"/>
                 <input type="hidden" value="{{$lvl_1->parentID}}" name="parent[{{$lvl_1->id}}]" id="parentLvl"/>

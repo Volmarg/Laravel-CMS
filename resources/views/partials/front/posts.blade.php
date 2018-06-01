@@ -8,7 +8,7 @@
 
     <h2><a href="{{url("/page/post/$post->slug")}}">{{$post->title}}</a></h2>
     <p>{!! $post->body !!}</p>
-    <h6>Posted by: {!! $post->user->name !!}</h6>
+         <h6>Posted by: {!! $post->user->name !!}</h6>
 
   </div>
 

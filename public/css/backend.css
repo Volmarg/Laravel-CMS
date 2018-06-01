@@ -37,6 +37,10 @@
   text-shadow: 2px 2px 5px black;
 }
 
+.modal-content img {
+  width: 100px;
+}
+
 .usersWrap td {
   padding: 5px;
   padding-left: 10px;

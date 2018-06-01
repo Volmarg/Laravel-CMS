@@ -15,6 +15,8 @@ class postingController extends Controller
       $db->body=request('body');
       $db->user_id=Auth::user()->id;
       $db->slug=str_slug(request('title'),'-');
+      $db->metaTitle=request('metaTitle');
+      $db->metaDescription=request('metaDescription');
       $db->save();
 
       return back();
@@ -30,7 +32,9 @@ class postingController extends Controller
       $db->where('id',request('post_id'))
          ->update([
            'title'=>request('title'),
-           'body'=>request('body')
+           'body'=>request('body'),
+           'metaTitle'=>request('metaTitle'),
+           'metaDescription'=>request('metaDescription')
          ]);
 
       return back();
