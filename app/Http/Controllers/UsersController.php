@@ -30,17 +30,26 @@ class UsersController extends Controller
 
     public function changeUserType(Request $request){
 
-    #TO DO
-      # prevent from chaning self privilages and other users on same level?
-      # when changed, also change the privilege column with - kind of default privileges
+    #TODO prevent from chaning self privilages and other users on same level?
+    #TODO: prevent from overwriting privileges of users which account type hadn't changed
     #first get the data sent from form
       $allUsersInputs=$request->all();
       $filteredSelects=$this->filterInputsName($allUsersInputs,'accountType-select-');
 
 
       foreach($filteredSelects as $key => $oneRequest){
-    #now set privilages for all users
+    #now set roles for all users
         users::where('name',$key)->update(['accountType'=>$oneRequest]);
+
+    #also set default privileges for given uer type
+
+          #get user ID
+          $id=users::select('id')->where('name',$key)->get()->toArray();
+          $id=$id[0]['id'];
+
+          #getPrivileges for that role
+          $privs=$this->defaultRolePrivileges($oneRequest);
+          usersPrivilages::where('users_id',$id)->update(['privilege'=>$privs]);
       }
 
       return redirect($_SERVER['HTTP_REFERER']);
@@ -94,6 +103,13 @@ class UsersController extends Controller
 
         return back();
     }
+
+
+    public function showPrivilege(){
+
+        return view('auth.users.usersPrivilege');
+    }
+
 
     private function jsonPrivilegesGenerator(){
         /* $len -> counts how many options are there (on/off), and it's used to create ',' on last json element
@@ -160,11 +176,6 @@ class UsersController extends Controller
         return $json;
     }
 
-    public function showPrivilege(){
-
-        return view('auth.users.usersPrivilege');
-    }
-
     private function filterInputsName($inputs,$filterBy){
 
       #reuturn array with only select source in it
@@ -179,6 +190,17 @@ class UsersController extends Controller
       }
 
       return $inputs;
+    }
+
+    private function defaultRolePrivileges($key){
+        $privileges=array(
+            'superAdmin'=>'{"users":"enable","posts":"enable","menu":"enable","media":"enable"}',
+            'admin'=>'{"users":"disabled","posts":"enable","menu":"enable","media":"enable"}',
+            'normal'=>'{"users":"disabled","posts":"enable","menu":"disabled","media":"disabled"}',
+            'suspended'=>'{"users":"disabled","posts":"disabled","menu":"disabled","media":"disabled"}'
+        );
+
+        return $privileges[$key];
     }
 
 }

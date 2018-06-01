@@ -1,6 +1,6 @@
 <?php
 //creating & editing
-Route::put('/posting','postingController@create');
+Route::post('/posting/put','postingController@create');
 Route::post('/posting','postingController@edit');
 Route::get('/posts/remove/{slug}','postingController@remove');
 Route::get('/posts/create','PostsController@create');

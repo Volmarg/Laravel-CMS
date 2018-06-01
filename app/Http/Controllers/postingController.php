@@ -10,7 +10,6 @@ use App\Http\Requests\postValidation;
 class postingController extends Controller
 {
     public function create(postValidation $request){
-
       $db=new post();
       $db->title=request('title');
       $db->body=request('body');

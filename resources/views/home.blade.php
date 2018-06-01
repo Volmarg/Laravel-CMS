@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('scripts')
-  <script>tinymce.init({ selector:'#textAreaTinyMce' });</script>
+  <script>tinymce.init({ selector:'#textAreaTinyMce2' });</script>
 @endsection
 
 

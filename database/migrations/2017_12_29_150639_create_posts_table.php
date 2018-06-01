@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->string('body');
+            $table->string(',metaTitle');
+            $table->string('metaDescription');
             $table->string('slug')->default('none');
             $table->timestamps();
         });

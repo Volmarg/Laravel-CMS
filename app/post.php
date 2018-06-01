@@ -16,4 +16,8 @@ class post extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function meta(){
+        return $this->select('id','metaTitle','metaDescription')->get()->toArray();
+    }
 }

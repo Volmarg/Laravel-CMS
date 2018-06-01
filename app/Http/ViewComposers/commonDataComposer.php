@@ -2,14 +2,18 @@
 
 use Illuminate\Contracts\View\View;
 use App\menu;
+use App\post;
 
-class MenuComposer {
+class commonDataComposer {
 
 
     public function compose(View $view)
     {
         $menuElements=menu::all()->sortBy('sortOder');
-        $view->with('menuElements', $menuElements);
+
+        $posts=new post();
+        $meta=$posts->meta();
+        $view->with(compact('menuElements','meta'));
     }
 
 }
