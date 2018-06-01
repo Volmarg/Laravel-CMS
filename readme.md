@@ -3,7 +3,7 @@
 <p>
 Creating Laravel based CMS in order to learn about this framework. 
 
-<img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_1.png?raw=true">
+<img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_1.jpg?raw=true">
 <br/><br/></br>
 <img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_2.png?raw=true">
 
