@@ -10,8 +10,23 @@ class mediaLibraryController extends Controller
     public function view(){
 
       $allImages=Storage::files('public/images');
+      $smallImages=array();
+      $bigImages=array();
 
-      return view('partials/admin/mediaLibrary',compact('allImages'));
+      #sort images based on their size
+        foreach ($allImages as $oneImage) {
+           $fineUrl=str_replace('public/images/', 'storage/images/',$oneImage);
+           $image = getimagesize($fineUrl);
+
+           if($image[1]>800){
+               array_push($bigImages,$oneImage);
+           }else{
+               array_push($smallImages,$oneImage);
+           };
+        }
+
+
+      return view('partials/admin/mediaLibrary',compact('allImages','smallImages','bigImages'));
     }
 
     public function remove(){

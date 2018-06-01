@@ -1,4 +1,42 @@
+//mine
+.mediaLibrary{
+  .media-lib-image{
+    width:300px;
+  }
 
-.media-lib-image{
-  width:250px;
+
+  .gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-left:100px;
+  }
+
+  .singleImageWrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+    position: relative;
+
+    margin: 10px;
+
+  }
+
+  .removalButton{
+    position: absolute;
+    right:10px;
+    top:5px;
+
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow: 2px 2px 5px black;
+  }
+}
+
+// external
+
+.mediaLibrary{
+
 }

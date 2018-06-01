@@ -1,5 +1,40 @@
-.media-lib-image {
-  width: 250px;
+.mediaLibrary .media-lib-image {
+  width: 300px;
+}
+
+.mediaLibrary .gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-left: 100px;
+}
+
+.mediaLibrary .singleImageWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  margin: 10px;
+}
+
+.mediaLibrary .removalButton {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: 2px 2px 5px black;
 }
 
 .usersWrap td {
@@ -536,5 +571,11 @@ label.hamburger {
 .tabs .tab:hover {
   background-color: #0062b3;
   cursor: pointer;
+}
+
+.primnav img {
+  width: 28px;
+  padding: 19px;
+  padding-bottom: 5px;
 }
 

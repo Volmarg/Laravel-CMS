@@ -1,5 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
+* {
+  color: white;
+}
+
+.activeUser * {
+  color: red;
+}
+
+.content {
+  width: 70%;
+}
+
+/*1*/
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -1385,9 +1399,10 @@ th {
   content: "\E260";
 }
 
-* {
+*:not .primnav {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  /**/
 }
 
 *:before,
@@ -1406,7 +1421,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
-  background-color: #f5f8fa;
+  background-color: #0070cc;
 }
 
 input,
@@ -1419,7 +1434,7 @@ textarea {
 }
 
 a {
-  color: #3097D1;
+  color: white;
   text-decoration: none;
 }
 
@@ -1516,7 +1531,7 @@ h6,
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
-  color: inherit;
+  color: white;
 }
 
 h1 small,
@@ -5385,7 +5400,7 @@ tbody.collapse.in {
 }
 
 .navbar-static-top {
-  z-index: 1000;
+  z-index: 1px;
   border-width: 0 0 1px;
 }
 
@@ -5688,31 +5703,30 @@ tbody.collapse.in {
 }
 
 .navbar-default {
-  background-color: #fff;
-  border-color: #d3e0e9;
+  background-color: #0070cc;
 }
 
 .navbar-default .navbar-brand {
-  color: #777;
+  color: white;
 }
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5d5d;
+  color: rgba(255, 255, 255, 0.8);
   background-color: transparent;
 }
 
 .navbar-default .navbar-text {
-  color: #777;
+  color: white;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: white;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: rgba(255, 255, 255, 0.7);
   background-color: transparent;
 }
 
@@ -8348,9 +8362,5 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-
-.content {
-  width: 70%;
 }
 

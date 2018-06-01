@@ -1,6 +1,15 @@
 $color:red;
+*{
+  color:white;
+}
+
+.activeUser *{
+  color: $color;
+}
 
 // ######## GLOBAL ##########
 .content{
   width:70%;
 }
+
+/*1*/
