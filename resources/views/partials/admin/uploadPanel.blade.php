@@ -12,8 +12,8 @@
       <input type="submit" value="Upload Image" name="submit">
   </form>
 
-  @foreach ($errors as $key => $error)
-    --{{$error}}--</br>
+  @foreach ($errors->all() as $key => $error)
+    {{$error}}
   @endforeach
 
     </div>

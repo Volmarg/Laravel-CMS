@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use App\Http\Requests\uploadValidation;
 
 class uploadController extends Controller
 {
@@ -13,24 +14,13 @@ class uploadController extends Controller
       return view('/partials/admin/uploadPanel');
     }
 
-    public function save(Request $request){
-      $files=array();
+    public function save(uploadValidation $request){
       $files=request()->file();
 
-      $request->validate([
-        'fileToUpload'=>'image',
-      ]);
-
         foreach($files as $fileData){
-            $name=$fileData->getClientOriginalName();
-            #$putted=Storage::put($name,file_get_contents($fileData));
-            $putted=Storage::putFile('public/images',new File($fileData));
+            Storage::putFile('public/images',new File($fileData));
 
-
-            return redirect('/media/upload');
         }
-
-
-        #dd($files);
+        return redirect('/media/upload');
     }
 }

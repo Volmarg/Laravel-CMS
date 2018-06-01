@@ -22,20 +22,21 @@ class UsersController extends Controller
 
     }
 
-    public function removeUser($sluger){
+    public function removeUser($name){
+        $id=users::select('id')->where('name',$name)->get()->toArray();
 
-        users::where('name',$sluger)->delete();
-        return redirect($_SERVER['HTTP_REFERER']);
+        usersPrivilages::where('users_id',$id)->delete();
+        users::where('name',$name)->delete();
+        return back();
     }
 
     public function changeUserType(Request $request){
 
+
     #TODO prevent from chaning self privilages and other users on same level?
-    #TODO: prevent from overwriting privileges of users which account type hadn't changed
     #first get the data sent from form
       $allUsersInputs=$request->all();
       $filteredSelects=$this->filterInputsName($allUsersInputs,'accountType-select-');
-
 
       foreach($filteredSelects as $key => $oneRequest){
     #now set roles for all users
@@ -210,7 +211,20 @@ class UsersController extends Controller
         }
       }
 
-      return $inputs;
+        #checking if actually role changed for given user
+        #remove users that aren't changing
+        foreach($inputs as $key=>$oneSelect){
+            $oldRole=users::select('accountType')->where('name',$key)->get()->toArray();
+
+            $oldRole=$oldRole[0]['accountType'];
+            $currRole=$inputs[$key];
+
+            if($oldRole==$currRole){
+                unset($inputs[$key]);
+            }
+        }
+
+        return $inputs;
     }
 
     private function defaultRolePrivileges($key){

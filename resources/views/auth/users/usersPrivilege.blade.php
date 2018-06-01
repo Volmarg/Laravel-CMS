@@ -10,13 +10,13 @@
             <form action="/users/changeUserPrivileges" method="POST">
                 <table>
                     <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>User.</th>
-                            @foreach($privileges[0] as $name=>$privilege)
-                                <th>{{$name}}</th>
-                            @endforeach
-                        </tr>
+                    <tr>
+                        <th>No.</th>
+                        <th>User.</th>
+                        @foreach($privileges[0] as $name=>$privilege)
+                            <th>{{$name}}</th>
+                        @endforeach
+                    </tr>
                     </thead>
                     <tbody>
 
@@ -25,22 +25,51 @@
                             <tr class="activeUser">
                         @else
                             <tr>
-                        @endif
+                                @endif
                                 <td>{{$key}}.</td>
                                 <td><b>{{$value->name}}</b></td>
                                 @foreach($privileges[$key] as  $count=>$oneUser)
-                                        @if($oneUser=='enable')
-                                            <th><input type="checkbox" checked name="pivilegeSingle{{$key}}[{{$count}}]" class="stateMark" data-name="{{$key}}[{{$count}}]"/> </th>
-                                        @else
-                                            <th><input type="checkbox" name="pivilegeSingle{{$key}}[{{$count}}]" class="stateMark" data-name="{{$key}}[{{$count}}]"/>
-                                                <input type="hidden" name="pivilegeOffSingle{{$key}}[{{$count}}]" value="off"/>
-                                            </th>
-                                        @endif
+                                    @if($oneUser=='enable')
+                                        <th>
+                                            <input
+                                                    checked
+                                                    name="pivilegeSingle{{$key}}[{{$count}}]"
+                                                    class="stateMark"
+                                                    data-name="{{$key}}[{{$count}}]"
+                                                    type="checkbox"
+                                            @if(auth()->user()->name!=$value->name)
+
+                                            @else
+                                                    readonly="readonly"
+                                            @endif
+                                            />
+                                        </th>
+                                    @else
+
+                                        <th>
+                                            <input
+                                                    name="pivilegeSingle{{$key}}[{{$count}}]"
+                                                    class="stateMark"
+                                                    data-name="{{$key}}[{{$count}}]"
+                                                    type="checkbox"
+                                            @if(auth()->user()->name!=$value->name)
+
+                                            @else
+                                                    readonly="readonly"
+                                            @endif
+                                                />
+                                                <input
+                                                   type="hidden"
+                                                   name="pivilegeOffSingle{{$key}}[{{$count}}]"
+                                                   value="off"
+                                                />
+                                        </th>
+                                    @endif
 
                                 @endforeach
                             </tr>
 
-                    @endforeach
+                            @endforeach
 
                     </tbody>
                 </table>
