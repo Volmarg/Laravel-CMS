@@ -6,6 +6,8 @@ Creating Laravel based CMS in order to learn about this framework.
 <img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_1.jpg?raw=true">
 <br/><br/></br>
 <img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_2.png?raw=true">
+<br/><br/></br>
+<img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_4.jpg?raw=true">
 
 <h2>What works atm.</h2>
 
@@ -45,6 +47,7 @@ Creating Laravel based CMS in order to learn about this framework.
 <h2>Used designs</h2>
 <ul>
 <li><a href="https://codepen.io/bradyhullopeter/pen/mRPQQy?editors=1100#0">Brady Hullopeter UI </a></li>
+<li><a href="https://codepen.io/mcraiganthony/pen/NxGxqm">Card boxes</a></li>
 </ul>
 
 <h2>Tech Stack</h2>
