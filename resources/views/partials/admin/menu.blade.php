@@ -21,19 +21,50 @@
                         @endforeach
                     </div>
 
+                    <h2> Create container</h2>
+                    <input type="text" name="containerName" class="containerName"/>
+                    <button class="containerAdder">Add</button>
+
                 </div>
 
                 <h3> Containers List </h3>
 
 
                 <section class="allContainersWrapper">
-                        <div class="singleContainer"  id="a1" data-num="1">
-                            <b class="containerName">qux</b>
-                        </div>
+                    @php
+                    $counter=1;
+                    $num=count($menuElements)-1;
+                    @endphp
+                    @for($x=0;$x<=$num;$x++)
+                        @if ($menuElements[$x]->slug=='#')
+                            <div class="singleContainer" id="a{{$counter}}">
+                                <b class="containerName" contentEditable="true">{{$menuElements[$x]->name}}</b>
+                                <i class="containerRemoval">Remove</i>
+                                @php
+                                    $counter++
+                                @endphp
+                        @else
+                            <div>
+                                 <span class="copy">
+                                     <span class="postName">
+                                         {{$menuElements[$x]->name}}
+                                     </span>
+                                     <span class="postLink">
+                                         {{$menuElements[$x]->slug}}
+                                     </span>
+                                 </span>
+                                 <i class="js-remove">✖</i>
+                            </div>
+                            @if ($x+1<=$num)
+                                @if($menuElements[$x+1]->slug=='#')
+                            </div>
+                                @endif
+                            @else
+                            </div>
+                            @endif
+                        @endif
+                    @endfor
 
-                        <div class="singleContainer"  id="a2" data-num="2">
-                            <b class="containerName">quux</b>
-                        </div>
                 </section>
 
                 {!! Form::open(['url'=>'/menu-edit','method'=>'POST']) !!}

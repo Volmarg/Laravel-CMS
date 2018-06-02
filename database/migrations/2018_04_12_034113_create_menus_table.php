@@ -18,7 +18,7 @@ class CreateMenusTable extends Migration
             $table->string('name');
             $table->integer('depth');
             $table->longText('parentID');
-            $table->string('slug');
+            $table->longText('slug');
             $table->timestamps();
             $table->integer('sortOder');
         });

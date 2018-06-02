@@ -46,22 +46,26 @@ function setSortables(){
 
 }
 
-
 //My Code
 
-function addContainer(ev){
+function addContainer(){
+    var nameHolder=$('.containerName');
+    var name=nameHolder.val();
+    if(name==''){
+        name='Null';
+    }
+
     //get elements and data
-    var element=$(ev.target).parent().find('.copy').clone();
     var containers=$('.allContainersWrapper');
     var nextNum=$('.singleContainer').last().data('num')+1;
-    //change cloned element
-    element.find('.containerAdder').remove();
-    element.find('.js-remove').remove();
+    if(isNaN(nextNum)==true){
+        nextNum=1;
+    }
 
     //set element new parameters
     var divWrapper=$('<div>');
     var boxName=$('<b>');
-    boxName.append(element.text());
+    boxName.append(name);
     boxName.addClass('containerName');
 
     divWrapper.addClass('singleContainer');
@@ -69,12 +73,16 @@ function addContainer(ev){
     divWrapper.attr('id','a'+nextNum);
     divWrapper.append(boxName); // here is the span being added inside box
 
-
     containers.append(divWrapper);
-    setSortables();
+    createJson();
 }
 
-function createJson(evt){
+function removeContainer(ev){
+    $(ev.target).closest('.singleContainer').remove();
+    createJson();
+}
+
+function createJson(){
     var allContainers=$('.singleContainer');
     var arr={};
     var lvl2Data={};
@@ -105,8 +113,18 @@ function createJson(evt){
     $('.jsonHolder').val(parsed);
 
 }
-setSortables();
-$('.containerAdder').on('click',function(event){
-    addContainer(event);
+
+    setSortables();
+    createJson();
+
+$('.containerAdder').on('click',function(){
+    addContainer();
+    setSortables();
+});
+$('.containerRemoval').on('click',function (event) {
+    removeContainer(event)
+});
+$('.containerName').on('input',function () {
+    createJson();
 })
 
