@@ -71,3 +71,13 @@ Creating Laravel based CMS in order to learn about this framework.
 <li>JQ,</li>
 <li>MySQL,</li>
 </ul>
+
+<h2>ToDo</h2>
+<li>Post min validation, </li>
+<li>Edit dashboard main panel, </li>
+<li>Layout fixes - colors ,</li>
+
+<h3>Maybe ToDo</h3>
+<li>Breadcrumbs,</li>
+<li>Banner on front,</li>
+

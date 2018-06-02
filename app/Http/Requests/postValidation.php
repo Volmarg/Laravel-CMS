@@ -25,7 +25,7 @@ class postValidation extends FormRequest
     {
         return [
             'title'=>'required',
-            'body'=>'required',
+            'body'=>'required|numeric|between:6,8',
         ];
     }
 }

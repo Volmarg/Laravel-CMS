@@ -28,7 +28,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                /*height: 100vh;*/
             }
 
             .flex-center {
@@ -80,7 +80,7 @@
                 <div class="top-right links">
                     <ul class="menuFront">
                     @auth
-                        <li> <a href="{{ url('/home') }}">Home</a> </li>
+                        <li> <a href="{{ url('/home') }}">CMS panel</a> </li>
                     @else
                       <li> <a href="{{ route('login') }}">Login</a></li>
                       <li><a href="{{ route('register') }}">Register</a></li>
@@ -89,16 +89,24 @@
                     @foreach ($menuElements as $key => $lvl_1)
                       {{-- but print only if given element doesnt have a parent so it's main menu element --}}
                       @if ($lvl_1->parentID=='-1')
-                        <li><a href="{{$lvl_1->slug}}">{{$lvl_1->name}}</a>
-                          {{-- Now for each element we need to check if there is any element which parent id is eq to this one id --}}
-                          <ul class="sub_menu">
-                            @foreach ($menuElements as $key_ => $lvl_2)
-                                @if ($lvl_1->id==$lvl_2->parentID)
-                                  <li>{{$lvl_2->name}}</li>
-                                @endif
-                            @endforeach
-                          </ul>
-                        </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                        {{$lvl_1->name}} <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                        @foreach ($menuElements as $key_ => $lvl_2)
+                                            @if ($lvl_1->id==$lvl_2->parentID)
+                                                    <a href="{{$lvl_2->slug}}">
+                                                        {{$lvl_2->name}}
+                                                    </a>
+                                            @endif
+                                        @endforeach
+                                        </li>
+
+                                    </ul>
+                                </li>
+
                       @endif
                     @endforeach
 

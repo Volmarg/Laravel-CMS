@@ -8,6 +8,11 @@
   */
 }
 
+section.singlePost * {
+  -ms-word-break: break-word;
+  word-break: break-word;
+}
+
 ul.menuFront {
   font-weight: bold;
   margin-right: 150px;
@@ -38,7 +43,7 @@ ul.menuFront .dropdown ul {
   left: -34px;
   margin-left: 0px;
   position: absolute;
-  top: 18px;
+  top: 13px;
 }
 
 ul.menuFront .dropdown ul li {
@@ -56,7 +61,7 @@ ul.menuFront li {
 
 ul.menuFront a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 ul.menuFront .sub_menu {

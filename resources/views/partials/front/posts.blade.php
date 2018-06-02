@@ -15,8 +15,7 @@
             <div class="card__content">
               <div class="card__title">{{$post->title}}</div>
               <p class="card__text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                <!-- {!! str_limit($post->body,100) !!} !-->
+                {!! str_limit(strip_tags(trim($post->body)),100) !!}
               </p>
               <a href="{{url("/page/post/$post->slug")}}"><button class="btn btn--block card__btn">Read more</button></a>
             </div>
