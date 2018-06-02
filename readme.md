@@ -30,7 +30,13 @@ Creating Laravel based CMS in order to learn about this framework.
         <li>Avatar.</li>
     </ul>
 </li>
-<li>partial menu editing,</li>
+<li>Js based menu
+    <ul>
+        <li>Adding lvl 1 elements,</li>
+        <li>Adding lvl 2 elements,</li>
+        <li>Renaming/removing elements,</li>
+    </ul>
+</li>
 <li>form validations,</li>
 </ul>
 
