@@ -30,13 +30,15 @@ Creating Laravel based CMS in order to learn about this framework.
         <li>Avatar.</li>
     </ul>
 </li>
-<li>partial menu editing.</li>
+<li>partial menu editing,</li>
+<li>form validations,</li>
 </ul>
 
 <h2>Used packages</h2>
 <li><a href="https://www.npmjs.com/package/livereload">Npm livereload</a> ,</li>
 <li><a href="https://www.npmjs.com/package/npm-watch">Npm watch</a>,</li>
 <li><a href="https://rvera.github.io/image-picker/">Image picker</a>,</li>
+
 
 <h2>Used tools</h2>
 <ul>
@@ -46,8 +48,9 @@ Creating Laravel based CMS in order to learn about this framework.
 
 <h2>Used designs</h2>
 <ul>
-<li><a href="https://codepen.io/bradyhullopeter/pen/mRPQQy?editors=1100#0">Brady Hullopeter UI </a></li>
-<li><a href="https://codepen.io/mcraiganthony/pen/NxGxqm">Card boxes</a></li>
+<li><a href="https://codepen.io/bradyhullopeter/pen/mRPQQy?editors=1100#0">Brady Hullopeter UI </a>,</li>
+<li><a href="https://codepen.io/mcraiganthony/pen/NxGxqm">Card boxes</a>,</li>
+<li><a href="https://icons8.com/icon/set/remove/all">Icons</a>,</li>
 </ul>
 
 <h2>Tech Stack</h2>

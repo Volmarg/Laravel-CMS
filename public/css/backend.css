@@ -37,6 +37,59 @@
   text-shadow: 2px 2px 5px black;
 }
 
+.uploadWrapper .upload-btn-wrapper,
+.uploadWrapper .formButton {
+  padding: 9px 22px;
+  cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+  border-radius: 0px;
+}
+
+.uploadWrapper .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.uploadWrapper .upload-btn-wrapper input[type=file],
+.uploadWrapper .upload-btn-wrapper input[type=submit] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.uploadWrapper .formButton {
+  border: none !important;
+  display: block;
+  float: right;
+  background-color: #007EFF;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.uploadWrapper .upload-btn-wrapper:hover {
+  cursor: pointer !important;
+  opacity: 0.7;
+}
+
+.uploadWrapper .allWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .modal-content img {
   width: 100px;
 }
@@ -52,8 +105,20 @@
 
 .usersPrivilege td,
 .usersPrivilege th {
-  border: 1px rgba(0, 0, 0, 0.1) solid;
   padding: 4px;
+}
+
+.usersRoles .removeButton {
+  width: 30px;
+  margin-left: 0px;
+}
+
+.usersRoles .removeButton:hover {
+  opacity: 0.7;
+}
+
+.usersRoles th {
+  color: #0434a2;
 }
 
 html {

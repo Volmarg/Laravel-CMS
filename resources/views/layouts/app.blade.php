@@ -34,6 +34,7 @@
 
 
         <!-- new layout !-->
+        @auth
         <input id="hamburger" class="hamburger" type="checkbox" />
         <label for="hamburger" class="hamburger">
             <i></i>
@@ -48,7 +49,7 @@
         <nav class="primnav">
             <ul>
                 <li>
-                    <a title="Dashboard" href="#dashboard">
+                    <a title="Users manage" href="{{url('/users/manage')}}">
                         <img src="{{asset('img/user-icon-dashboard.png')}}"/> Users
                     </a>
                     <ul class="secnav">
@@ -61,7 +62,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a title="Mail" href="#mail">
+                    <a title="Create Post" href="/posts/create">
                         <img src="{{asset('/img/posts-icon-dashboarad.png')}}"/> Posts
                     </a>
                     <ul class="secnav">
@@ -74,7 +75,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a title="Notifications" href="#notifications">
+                    <a title="Upload media" href="{{url('/media/upload')}}">
                         <img src="{{asset('/img/media-icon-dashboard.png')}}" /> Media library
                     </a>
                     <ul class="secnav">
@@ -87,7 +88,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a title="System Administration" href="#sysadmin">
+                    <a title="Edit menu" href="{{url('/menu')}}">
                         <img src="{{asset('/img/menu-icon-dashboard.png')}}" /> Menu settings
                     </a>
                     <ul class="secnav">
@@ -101,7 +102,7 @@
         </nav>
 
         <!-- user right side !-->
-        @auth
+
         <user id="user">
             <section>
                 <img src="

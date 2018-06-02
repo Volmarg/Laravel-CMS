@@ -6,9 +6,9 @@
 
         <div class="wrapper usersWrap usersPrivilege">
 
-            <h1>Users data here</h1>
+            <h1>Users privileges panel</h1>
             <form action="/users/changeUserPrivileges" method="POST">
-                <table>
+                <table class="table table-responsive">
                     <thead>
                     <tr>
                         <th>No.</th>
@@ -22,7 +22,7 @@
 
                     @foreach ($allUsers as $key => $value)
                         @if(auth()->user()->name==$value->name)
-                            <tr class="activeUser">
+                            <tr class="activeUser" style="display:none;">
                         @else
                             <tr>
                                 @endif
@@ -76,7 +76,7 @@
 
 
                 {!! csrf_field() !!}
-                <input type="submit" name="submited" value="Update" class="btn btn-warning">
+                <input type="submit" name="submited" value="Update" class="btn btn-info">
                 <input type="hidden" value="{{$names}}" name="privNames" />
             </form>
 

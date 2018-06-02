@@ -14,14 +14,24 @@
 
 .usersPrivilege{
   td,th{
-    border:1px rgba(0,0,0,0.1) solid;
+
     padding:4px;
   }
 
-  //DROPDOWN NAVIGATION
-  //SIMPLE AND RESPONSIVE MENU
-  //STRIKETHROUGH HOVER EFFECT
-  //HIDDEN SIDE MENU
-  //FIXED NAVIGATION SIDEBAR ----->>> BEST
-  //SLIDING MENU ->>> BEEEEST 2 -->Brady Hullopeter
+}
+
+// Roles select panels
+.usersRoles{
+
+  .removeButton{
+    width:30px;
+    margin-left:0px;
+    &:hover{
+      opacity:0.7;
+    }
+  }
+
+  th{
+    color:rgba(4, 52, 162,1);
+  }
 }

@@ -4,28 +4,32 @@
 
     <section classs="mainWrap" style="display:flex;justify-content:space-around;">
 
-        <div class="wrapper usersWrap">
+        <div class="wrapper usersWrap ">
 
-            <h1>Users data here</h1>
+            <h1>Users roles panel</h1>
             <form action="/users/changeUserType" method="POST">
-                <table>
+                <table class="usersRoles table table-responsive">
                     <thead>
-
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Curr. role</th>
+                        <th>Select role</th>
+                        <th>Remove</th>
                     </thead>
                     <tbody>
 
                     @foreach ($allUsers as $key => $value)
                         @if(auth()->user()->name==$value->name)
-                            <tr class="activeUser">
+                            <tr class="activeUser" style="display:none;">
                         @else
                             <tr>
                                 @endif
                                 <td>{{$key}}.</td>
                                 <td><b>{{$value->name}}</b></td>
                                 <td><b>{{$value->accountType}}</b></td>
-                                <td>
+                                <td >
                                     @if(auth()->user()->name!=$value->name)
-                                        <select name="accountType-select-{{$value->name}}">
+                                        <select name="accountType-select-{{$value->name}}" class="form-control">
                                             @foreach($accountTypes as $key => $type)
                                                 <option
                                                         @if ($value->accountType==$type->type)
@@ -43,7 +47,9 @@
                                 </td>
                                 <td>
                                     @if(auth()->user()->name!=$value->name)
-                                        <a href="/users/remove/{{$value->name}}">Remove</a>
+                                      <a href="/users/remove/{{$value->name}}">
+                                        <img class="removeButton" src="{{asset('/img/icons8-delete-64.png')}}"/>
+                                        </a>
                                     @else
                                         <b>Can't remove</b>
                                     @endif

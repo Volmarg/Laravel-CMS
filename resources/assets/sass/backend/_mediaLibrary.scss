@@ -35,6 +35,55 @@
   }
 }
 
+.uploadWrapper{
+  .upload-btn-wrapper, .formButton{
+    padding: 9px 22px;
+    cursor: pointer;
+    border: none;
+    -webkit-appearance: none;
+    border-radius: 0px;
+  }
+
+  .upload-btn-wrapper{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    align-self: baseline;
+  }
+
+  .upload-btn-wrapper input[type=file], .upload-btn-wrapper input[type=submit]{
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .formButton{
+    border: none !important;
+    display: block;
+    float: right;
+    background-color: #007EFF;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+
+  .upload-btn-wrapper:hover{
+    cursor:pointer !important;
+    opacity:0.7;
+  }
+
+  .allWrapper{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+}
 // external
 
 .mediaLibrary{
