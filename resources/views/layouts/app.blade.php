@@ -14,7 +14,7 @@
 
     <script src="{{ asset('js/modals.js')}}"></script>
     <script src="{{ asset('js/image-picker/image-picker.js')}}"></script>
-
+    <script src="{{ asset('js/rubaxa-sortable/Sortable.js')}}"></script>
     @yield('scripts')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
