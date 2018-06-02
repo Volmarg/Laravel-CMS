@@ -38,6 +38,7 @@ Creating Laravel based CMS in order to learn about this framework.
 <li><a href="https://www.npmjs.com/package/livereload">Npm livereload</a> ,</li>
 <li><a href="https://www.npmjs.com/package/npm-watch">Npm watch</a>,</li>
 <li><a href="https://rvera.github.io/image-picker/">Image picker</a>,</li>
+<li><a href="http://rubaxa.github.io/Sortable/">SortableJs</a>,</li>
 
 
 <h2>Used tools</h2>
