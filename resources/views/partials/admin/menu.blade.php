@@ -7,24 +7,32 @@
             <div class="col-md-12 col-md-offset-0">
 
 
-                <div class="wrapper">
-                    <h1>Existing posts</h1>
-                    <div id="A" class="">
-                        @foreach ($allPosts as $num => $post)
-                            <div class="">
-                                <span class="copy">
-                                   <span class="postName">{{$post->title}}</span>
-                                   <span class="postLink">{{url($post->slug)}}</span>
-                                </span>
-                               <!-- <span class="containerAdder"> [ + ] </span> !-->
+                <div class="wrapperControllers">
+
+                    <div class="existingPosts_">
+                        <h1>Existing posts</h1>
+                        <div class="existingPosts">
+                            <div id="A" class="">
+                                @foreach ($allPosts as $num => $post)
+                                    <div class="">
+                                        <span class="copy">
+                                           <span class="postName">{{$post->title}}</span>
+                                           <span class="postLink">{{url($post->slug)}}</span>
+                                        </span>
+                                       <!-- <span class="containerAdder"> [ + ] </span> !-->
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        </div>
                     </div>
+                    <div class="createContainer">
+                        <h2> Create container</h2>
+                        <input type="text" name="containerName" class="containerName form-control"/>
 
-                    <h2> Create container</h2>
-                    <input type="text" name="containerName" class="containerName"/>
-                    <button class="containerAdder">Add</button>
-
+                        <div class="upload-btn-wrapper">
+                            <button class="containerAdder formButton">Add</button>
+                        </div>
+                    </div>
                 </div>
 
                 <h3> Containers List </h3>
@@ -37,9 +45,13 @@
                     @endphp
                     @for($x=0;$x<=$num;$x++)
                         @if ($menuElements[$x]->slug=='#')
-                            <div class="singleContainer" id="a{{$counter}}">
-                                <b class="containerName" contentEditable="true">{{$menuElements[$x]->name}}</b>
-                                <i class="containerRemoval">Remove</i>
+                            <div class="singleContainer" id="a{{$counter}}" data-num="{{$counter}}">
+                                <span class="containerControll">
+                                    <b class="containerName" contentEditable="true">
+                                        {{$menuElements[$x]->name}}
+                                    </b>
+                                    <i class="containerRemoval">Remove</i>
+                                </span>
                                 @php
                                     $counter++
                                 @endphp
@@ -69,7 +81,10 @@
 
                 {!! Form::open(['url'=>'/menu-edit','method'=>'POST']) !!}
                     {!! Form::hidden('json','',['class'=>"jsonHolder"]) !!}
-                    {!! Form::submit('Save') !!}
+                    <div class="upload-btn-wrapper">
+                        <button class="formButton">Save</button>
+                        {!! Form::submit('Save',['class'=>'formButton']) !!}
+                    </div>
                 {!! Form::close() !!}
 
             </div>

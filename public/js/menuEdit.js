@@ -64,17 +64,25 @@ function addContainer(){
 
     //set element new parameters
     var divWrapper=$('<div>');
+    var control=$('<span>');
     var boxName=$('<b>');
+
+    boxName.attr('contenteditable','true');
     boxName.append(name);
     boxName.addClass('containerName');
+
+    control.addClass('containerControll');
+    control.append(boxName);
+    control.append('<i class="containerRemoval">Remove</i>');
 
     divWrapper.addClass('singleContainer');
     divWrapper.data('num',nextNum);
     divWrapper.attr('id','a'+nextNum);
-    divWrapper.append(boxName); // here is the span being added inside box
+    divWrapper.append(control); // here is the span being added inside box
 
     containers.append(divWrapper);
     createJson();
+    removalInvoke();
 }
 
 function removeContainer(ev){
@@ -121,9 +129,12 @@ $('.containerAdder').on('click',function(){
     addContainer();
     setSortables();
 });
-$('.containerRemoval').on('click',function (event) {
-    removeContainer(event)
-});
+function removalInvoke(){
+    $('.containerRemoval').on('click',function (event) {
+        removeContainer(event)
+    });
+}
+removalInvoke();
 $('.containerName').on('input',function () {
     createJson();
 })

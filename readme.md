@@ -52,6 +52,7 @@ Creating Laravel based CMS in order to learn about this framework.
 <li><a href="https://codepen.io/bradyhullopeter/pen/mRPQQy?editors=1100#0">Brady Hullopeter UI </a>,</li>
 <li><a href="https://codepen.io/mcraiganthony/pen/NxGxqm">Card boxes</a>,</li>
 <li><a href="https://icons8.com/icon/set/remove/all">Icons</a>,</li>
+<li><a href="https://codepen.io/andytran/pen/eIgoJ">Flat Vertical Nav 2.0</a>,</li>
 </ul>
 
 <h2>Tech Stack</h2>

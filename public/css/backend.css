@@ -38,7 +38,9 @@
 }
 
 .uploadWrapper .upload-btn-wrapper,
-.uploadWrapper .formButton {
+.uploadWrapper .formButton,
+.menuBuilderWrapper .upload-btn-wrapper,
+.menuBuilderWrapper .formButton {
   padding: 9px 22px;
   cursor: pointer;
   border: none;
@@ -46,7 +48,8 @@
   border-radius: 0px;
 }
 
-.uploadWrapper .upload-btn-wrapper {
+.uploadWrapper .upload-btn-wrapper,
+.menuBuilderWrapper .upload-btn-wrapper {
   position: relative;
   overflow: hidden;
   display: inline-block;
@@ -55,7 +58,9 @@
 }
 
 .uploadWrapper .upload-btn-wrapper input[type=file],
-.uploadWrapper .upload-btn-wrapper input[type=submit] {
+.uploadWrapper .upload-btn-wrapper input[type=submit],
+.menuBuilderWrapper .upload-btn-wrapper input[type=file],
+.menuBuilderWrapper .upload-btn-wrapper input[type=submit] {
   font-size: 100px;
   position: absolute;
   left: 0;
@@ -63,7 +68,8 @@
   opacity: 0;
 }
 
-.uploadWrapper .formButton {
+.uploadWrapper .formButton,
+.menuBuilderWrapper .formButton {
   border: none !important;
   display: block;
   float: right;
@@ -75,12 +81,14 @@
   margin-top: 10px;
 }
 
-.uploadWrapper .upload-btn-wrapper:hover {
+.uploadWrapper .upload-btn-wrapper:hover,
+.menuBuilderWrapper .upload-btn-wrapper:hover {
   cursor: pointer !important;
   opacity: 0.7;
 }
 
-.uploadWrapper .allWrapper {
+.uploadWrapper .allWrapper,
+.menuBuilderWrapper .allWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -648,7 +656,41 @@ label.hamburger {
   padding-bottom: 5px;
 }
 
-.allContainersWrapper {
+.menuBuilderWrapper .singleContainer div,
+.menuBuilderWrapper .existingPosts div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
+  padding: 8px;
+}
+
+.menuBuilderWrapper .singleContainer .containerControll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
+}
+
+.menuBuilderWrapper .allContainersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -659,18 +701,36 @@ label.hamburger {
   padding: 15px;
 }
 
-.allContainersWrapper .singleContainer {
+.menuBuilderWrapper .allContainersWrapper .singleContainer,
+.menuBuilderWrapper .existingPosts {
   width: 450px;
   height: 200px;
-  -webkit-box-shadow: 2px 2px 5px black;
-          box-shadow: 2px 2px 5px black;
-  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: #3497DA;
   margin: 10px;
 }
 
-.displayer {
+.menuBuilderWrapper .displayer {
   border: 2px yellow solid;
   width: 300px;
   height: 150px;
+}
+
+.menuBuilderWrapper .wrapperControllers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menuBuilderWrapper .wrapperControllers * {
+  height: auto;
 }
 
