@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\post;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Articles;
+
 
 
 class PostsController extends Controller

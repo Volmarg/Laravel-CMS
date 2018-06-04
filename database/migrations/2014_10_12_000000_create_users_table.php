@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('accountType')->default('admin');
             $table->timestamps();
+            $table->longText('remember_token');
             $table->string('image');
         });
     }

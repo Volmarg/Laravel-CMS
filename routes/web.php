@@ -11,6 +11,14 @@
 |
 */
 
+//Services testing
+App::bind('App\Tests\services',function(){
+    return new \App\Tests\services('123');
+});
+
+$service_=App::make('App\Tests\services');
+
+
 #-------------- Authorization controllers
 
 Route::group(['middleware'=>['web','privileges']],function(){
