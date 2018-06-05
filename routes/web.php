@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\PostsController;
+
 //Services testing
 App::bind('App\Tests\services',function(){
     return new \App\Tests\services('123');

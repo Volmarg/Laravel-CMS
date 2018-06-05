@@ -9,7 +9,12 @@ use App\post;
 class MenuController extends Controller
 {
 
-  public function view(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function view(){
     $allPosts=post::all();
 
 
