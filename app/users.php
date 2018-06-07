@@ -10,11 +10,12 @@ class users extends Model
         return $this->select('id')->where('name',$name)->get()->toArray();
     }
 
-    public function remove_($name){
-        return $this->remove($name);
+    public function remove($name){
+        return $this->where('name',$name)->delete();
     }
 
     public function updateAccountType($key,$oneRequest){
         return $this->where('name',$key)->update(['accountType'=>$oneRequest]);
     }
+
 }

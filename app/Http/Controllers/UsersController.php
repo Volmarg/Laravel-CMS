@@ -23,9 +23,9 @@ class UsersController extends Controller
     }
 
     public function removeUser($name,Users $users, usersPrivilages $privileges_){
-        $id=$users->id($name);
-        $privileges_->remove($id);
-        $users->remove_($name);
+        $id=$users->id($name);     #get user id
+        $privileges_->remove($id); #remove record from privileges
+        $users->remove($name);     #remove record from users
 
         return back();
     }
@@ -39,24 +39,21 @@ class UsersController extends Controller
 
       foreach($filteredSelects as $key => $oneRequest){
 
-    #now set roles for all users
-       $users_->updateAccountType($key,$oneRequest);
+    #set roles for all users
+          $users_->updateAccountType($key,$oneRequest);
 
-    #also set default privileges for given uer type
-
-          #get user ID
-          $id=users::select('id')->where('name',$key)->get()->toArray();
+    #set default privileges for given uer type
+          $id=$users_->id($key);    #get user ID
           $id=$id[0]['id'];
 
-          #getPrivileges for that role
-          $privs=$this->defaultRolePrivileges($oneRequest);
+          $privs=$this->defaultRolePrivileges($oneRequest); #getPrivileges for that role
           usersPrivilages::where('users_id',$id)->update(['privilege'=>$privs]);
       }
 
-      return redirect($_SERVER['HTTP_REFERER']);
+      return back();
     }
 
-    public function changeUserPrivileges(Request $request){
+    public function changeUserPrivileges(usersPrivilages $privileges_eloq){
 
         #This returns arrays of settings for users
         $allUsersJson=$this->jsonPrivilegesGenerator();
@@ -97,11 +94,9 @@ class UsersController extends Controller
                 $singleJson=json_encode($one);
 
             }
-            usersPrivilages::where('id',$updateIterator)->update(['privilege'=>$singleJson]);
+            $privileges_eloq->updatePrivilege($updateIterator,$singleJson);
             $updateIterator++;
         }
-
-
         return back();
     }
 
