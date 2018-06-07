@@ -22,25 +22,25 @@ class UsersController extends Controller
 
     }
 
-    public function removeUser($name){
-        $id=users::select('id')->where('name',$name)->get()->toArray();
+    public function removeUser($name,Users $users, usersPrivilages $privileges_){
+        $id=$users->id($name);
+        $privileges_->remove($id);
+        $users->remove_($name);
 
-        usersPrivilages::where('users_id',$id)->delete();
-        users::where('name',$name)->delete();
         return back();
     }
 
-    public function changeUserType(Request $request){
+    public function changeUserType(Request $request, users $users_){
 
 
-    #TODO prevent from chaning self privilages and other users on same level?
     #first get the data sent from form
       $allUsersInputs=$request->all();
       $filteredSelects=$this->filterInputsName($allUsersInputs,'accountType-select-');
 
       foreach($filteredSelects as $key => $oneRequest){
+
     #now set roles for all users
-        users::where('name',$key)->update(['accountType'=>$oneRequest]);
+       $users_->updateAccountType($key,$oneRequest);
 
     #also set default privileges for given uer type
 

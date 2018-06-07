@@ -33,6 +33,7 @@ class PostsController extends Controller
 
     public function manage(){
         $posts=post::all();
+
         return view('auth/posts/manage',compact('posts'));
     }
 

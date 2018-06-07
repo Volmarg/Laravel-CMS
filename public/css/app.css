@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
-* {
+*:not([class^='phpdebugbar']) {
   color: white;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
