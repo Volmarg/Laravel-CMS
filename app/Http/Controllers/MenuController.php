@@ -23,7 +23,7 @@ class MenuController extends Controller
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function edit(menu $menuCtrl){
+    public function edit(menu $menuEloq){
 
         $menus=new menu();
         $menuElements=json_decode($_POST['json'],true);
@@ -35,28 +35,15 @@ class MenuController extends Controller
         $slug='';
         $parentID='';
             //first insert box data = will be unclickable
-            $menus->insert([
-                'name' => $name,
-                'slug' => '#',
-                'depth' => 1,
-                'parentID' => '-1',
-                'sortOder' => 0
-            ]);
-
-            $id=$menuCtrl->getElementID($name)[0]['id']; //--> refractored to check
+            $menuEloq->updateMenu($name,'#',1,'-1',0);
+            $id=$menuEloq->getElementID($name)[0]['id'];
 
             foreach($oneMenu[1] as $links){
                 $slug=$links[1];
                 $name=$links[0];
 
                 //now insert rest element data as submenu
-                $menus->insert([
-                    'name' => $name,
-                    'slug' => $slug,
-                    'depth' => 1,
-                    'parentID' => $id,
-                    'sortOder' => 0
-                ]);
+                $menuEloq->updateMenu($name,$slug,1,$id,0);
             }
 
         }

@@ -9,33 +9,30 @@ use App\Http\Requests\postValidation;
 
 class postingController extends Controller
 {
-    public function create(postValidation $request){
-      $db=new post();
-      $db->title=request('title');
-      $db->body=request('body');
-      $db->user_id=Auth::user()->id;
-      $db->slug=str_slug(request('title'),'-');
-      $db->metaTitle=request('metaTitle');
-      $db->metaDescription=request('metaDescription');
-      $db->save();
+    public function create(postValidation $request,post $post){
+
+        $post->createPost(
+            request('title'),
+            request('body'),
+            Auth::user()->id,
+            str_slug(request('title'),'-'),
+            request('metaTitle'),
+            request('metaDescription')
+        );
 
       return back();
     }
 
-    public function edit(){
+    public function edit(postValidation $request, post $post){
 
-      $this->validate(request(),[
-      'title'=>'required',
-      'body'=>'required']);
+      $post->updatePost(
+          request('post_id'),
+          request('title'),
+          request('body'),
+          request('metaTitle'),
+          request('metaDescription')
 
-      $db=new post();
-      $db->where('id',request('post_id'))
-         ->update([
-           'title'=>request('title'),
-           'body'=>request('body'),
-           'metaTitle'=>request('metaTitle'),
-           'metaDescription'=>request('metaDescription')
-         ]);
+      );
 
       return back();
     }
