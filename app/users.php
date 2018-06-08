@@ -18,4 +18,18 @@ class users extends Model
         return $this->where('name',$key)->update(['accountType'=>$oneRequest]);
     }
 
+    public function updateUserProfile($id,$data){
+        users::where('id',$id)->update([
+            'name'=>$data['name'],
+            'email'=>$data['email'],
+            'image'=>$data['image']
+        ]);
+
+        if($data['password']!='' && $data['password']!=null){
+            users::where('id',$id)->update([
+                'password'=>bcrypt($data['password'])
+            ]);
+        }
+    }
+
 }

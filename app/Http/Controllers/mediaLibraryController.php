@@ -12,8 +12,7 @@ class mediaLibraryController extends Controller
     }
 
     public function remove(){
-      $filename=request('fileName');
-      Storage::delete($filename);
+      Storage::delete(request('fileName'));
 
       return redirect('/media/library');
     }

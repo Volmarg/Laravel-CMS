@@ -15,17 +15,15 @@ class MenuController extends Controller
     }
 
     public function view(){
-    $allPosts=post::all();
+        $allPosts=post::all();
 
-
-    return view('partials/admin/menu',compact('menuElements','allPosts'));
-
+        return view('partials/admin/menu',compact('menuElements','allPosts'));
   }
 
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function edit(){
+    public function edit(menu $menuCtrl){
 
         $menus=new menu();
         $menuElements=json_decode($_POST['json'],true);
@@ -45,8 +43,7 @@ class MenuController extends Controller
                 'sortOder' => 0
             ]);
 
-            $id=$menus->select('id')->where('name',$name)->get()->toArray();
-            $id=$id[0]['id'];
+            $id=$menuCtrl->getElementID($name)[0]['id']; //--> refractored to check
 
             foreach($oneMenu[1] as $links){
                 $slug=$links[1];

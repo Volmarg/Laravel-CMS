@@ -8,6 +8,8 @@ use App\usersTypes;
 use Gate;
 use Request as facadeRequest;
 use App\usersPrivilages;
+use App\Http\Controllers\UsersPrivilegesController;
+
 class UsersController extends Controller
 {
 
@@ -30,12 +32,12 @@ class UsersController extends Controller
         return back();
     }
 
-    public function changeUserType(Request $request, users $users_){
+    public function changeUserType(Request $request, users $users_, UsersPrivilegesController $privilegesController,usersPrivilages $privileges_eloq,requestsController $requestsController){
 
 
     #first get the data sent from form
       $allUsersInputs=$request->all();
-      $filteredSelects=$this->filterInputsName($allUsersInputs,'accountType-select-');
+      $filteredSelects=$requestsController->filterInputsName($allUsersInputs,'accountType-select-');
 
       foreach($filteredSelects as $key => $oneRequest){
 
@@ -43,20 +45,19 @@ class UsersController extends Controller
           $users_->updateAccountType($key,$oneRequest);
 
     #set default privileges for given uer type
-          $id=$users_->id($key);    #get user ID
-          $id=$id[0]['id'];
+          $id=$users_->id($key)[0]['id'];    #get user ID
 
-          $privs=$this->defaultRolePrivileges($oneRequest); #getPrivileges for that role
-          usersPrivilages::where('users_id',$id)->update(['privilege'=>$privs]);
+          $privs=$privilegesController->defaultRolePrivileges($oneRequest);#getPrivileges for that role
+          $privileges_eloq->updateRoleBasedPrivilege($id,$privs); #setPrivileges for that role
       }
 
       return back();
     }
 
-    public function changeUserPrivileges(usersPrivilages $privileges_eloq){
+    public function changeUserPrivileges(usersPrivilages $privileges_eloq,UsersPrivilegesController $privilegesController){
 
         #This returns arrays of settings for users
-        $allUsersJson=$this->jsonPrivilegesGenerator();
+        $allUsersJson=$privilegesController->jsonPrivilegesGenerator();
         $parsedSettings=json_decode($allUsersJson,true);
 
         #now create single json for each users. Since returned on/off options are split between arrays they need to me merged
@@ -112,125 +113,10 @@ class UsersController extends Controller
         return view('auth.users.profileEdit');
     }
 
-    public function userOptions(Request $request){
-        users::where('id',Auth()->user()->id)->update([
-            'name'=>$_POST['name'],
-            'email'=>$_POST['email'],
-            'image'=>$_POST['image']
-        ]);
+    public function userOptions(Request $request, users $users_){
 
-        if($_POST['password']!='' && $_POST['password']!=null){
-            users::where('id',Auth()->user()->id)->update([
-                'password'=>bcrypt($_POST['password'])
-            ]);
-        }
-
+        $users_->updateUserProfile(Auth()->user()->id,$_POST);
         return back();
-    }
-
-    private function jsonPrivilegesGenerator(){
-        /* $len -> counts how many options are there (on/off), and it's used to create ',' on last json element
-         * $json-> general variable 'string' that in the end creates one big json string with all users data
-         * all arrays are associative since this helps generating json with privileges names
-        */
-
-        $json='{'; #starting wrapper
-        #prepare counters for iterations
-        $x=0;
-        $usersSize=0;
-
-        #check how many users are there - this is used to generate ',' in json structure on last element
-        foreach($_POST as $postName=>$singleUser){
-            if(strstr($postName,'pivilege')){
-                $usersSize++;
-            }
-        }
-
-        #start iterating over all result post
-        foreach($_POST as $postName=>$singleUser){
-
-            $i=0;
-            if(strstr($postName,'pivilegeSingle')){#for checked checkboxes
-                $json.='"'.$x.'":{';
-                foreach($singleUser as $name=>$value){
-                    $len=count($singleUser)-1;
-                    if($singleUser[$name]=='on'){
-                        $json.='"'.$name.'"'.':'.'"enable"';
-                    }
-
-                    if($i<$len){
-                        $json.=',';
-                    }
-                    $i++;
-                }#for checkboxes that have been unchecked
-            }elseif(strstr($postName,'pivilegeOffSingle')){
-                $json.='"'.$x.'":{';
-                foreach($singleUser as $name=>$value){
-                    $len=count($singleUser)-1;
-                    if($singleUser[$name]=='off'){
-                        $json.='"'.$name.'"'.':'.'"disabled"';
-                    }
-
-                    if($i<$len){
-                        $json.=',';
-                    }
-                    $i++;
-                }
-            }else{
-                $x++;
-                continue;
-            }
-
-            $x++;
-            if($x<$usersSize){
-                $json.='},';
-            }else{
-                $json.='}';
-            }
-        }
-        $json.='}';
-
-        return $json;
-    }
-
-    private function filterInputsName($inputs,$filterBy){
-
-      #reuturn array with only select source in it
-      foreach($inputs as $key => $oneRequest){
-        if(!preg_match('#'.$filterBy.'#smi',$key)){
-          unset($inputs[$key]);
-        }else{
-          unset($inputs[$key]);
-          $accountName=str_replace($filterBy,'',$key);
-          $inputs[$accountName]=$oneRequest;
-        }
-      }
-
-        #checking if actually role changed for given user
-        #remove users that aren't changing
-        foreach($inputs as $key=>$oneSelect){
-            $oldRole=users::select('accountType')->where('name',$key)->get()->toArray();
-
-            $oldRole=$oldRole[0]['accountType'];
-            $currRole=$inputs[$key];
-
-            if($oldRole==$currRole){
-                unset($inputs[$key]);
-            }
-        }
-
-        return $inputs;
-    }
-
-    private function defaultRolePrivileges($key){
-        $privileges=array(
-            'superAdmin'=>'{"users":"enable","posts":"enable","menu":"enable","media":"enable"}',
-            'admin'=>'{"users":"disabled","posts":"enable","menu":"enable","media":"enable"}',
-            'normal'=>'{"users":"disabled","posts":"enable","menu":"disabled","media":"disabled"}',
-            'suspended'=>'{"users":"disabled","posts":"disabled","menu":"disabled","media":"disabled"}'
-        );
-
-        return $privileges[$key];
     }
 
 }
