@@ -51,6 +51,8 @@ Creating Laravel based CMS in order to learn about this framework.
 <ul>
 <li>PHP storm,</li>
 <li>Atom,</li>
+<li>Xampp,</li>
+<li>Larvel DebugBar,</li>
 </ul>
 
 <h2>Used designs</h2>
