@@ -33,22 +33,17 @@ class PostsController extends Controller
 
     public function manage(){
         $posts=post::all();
-
         return view('auth/posts/manage',compact('posts'));
     }
 
-    public function edit($slug){
-      $posts=new post();
-      $query=$posts->all()->where('slug',$slug);
-      $post=$query->first();
-
+    public function edit($slug, post $posts){
+      $post=$posts->editPostBladeViewData($slug);
       return view('auth/posts/edit',compact('post'));
     }
 
-    public function view($slug){
+    public function view($slug,post $posts){
 
-      $postsData=post::all()->where('slug',$slug);
-      $postData=$postsData->first();
+      $postData=$posts->editPostBladeViewData($slug);
       return view('/partials.front.singlePost',compact('postData'));
     }
 

@@ -42,4 +42,8 @@ class post extends Model
             ]);
 
     }
+
+    public function editPostBladeViewData($slug){
+        return $this->all()->where('slug',$slug)->first();
+    }
 }
