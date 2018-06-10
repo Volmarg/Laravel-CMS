@@ -32,4 +32,7 @@ class users extends Model
         }
     }
 
+    public function getStatus($id){
+        return $this->select('accountType')->where('id',$id);
+    }
 }

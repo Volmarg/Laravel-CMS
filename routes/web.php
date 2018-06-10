@@ -23,9 +23,12 @@ $service_=App::make('App\Tests\services');
 
 #-------------- Authorization controllers
 
+Route::get('/errorsHandler','ErrorsController@handle')->name('errors');
+Auth::routes();
+
 Route::group(['middleware'=>['web','privileges']],function(){
 
-    Auth::routes();
+
     Route::get('/home', 'HomeController@index')->name('home');
     #--------------- tests
         include_once 'paths\subdomainTest.php';
