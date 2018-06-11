@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\users;
 use App\usersPrivilages;
+use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
     /*
@@ -64,22 +65,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-       User::create([
+        #models
+        $usersTypes=new usersTypes();
+        $usersPrivilages=new usersPrivilages();
+
+        #get next auto incerement
+        $tableStatus = DB::select("show table status from `cms` where Name = 'users'");
+
+        // Get first table result, get its next auto incrementing value
+        $nextAutoID=$tableStatus[0]->Auto_increment;
+
+        #get privileges for normal user role
+        $privilege=$usersTypes->getPrivileges('normal');
+
+        #create new privileges record
+        $usersPrivilages->insertPrivilege($nextAutoID,$privilege);
+
+        #create new user record
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
 
-        $usersTypes=new usersTypes();
-        $users=new users();
-        $usersPrivilages=new usersPrivilages();
 
-        $id=$users->id($data['name'])[0]['id'];
-
-        $privilege=$usersTypes->getPrivileges('normal');
-
-        $usersPrivilages->insertPrivilege($id,$privilege);
-
-        return redirect('/login');
     }
 }
