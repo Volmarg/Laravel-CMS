@@ -73,7 +73,8 @@ class UsersPrivilegesController extends Controller
     }
 
     #this function simply holds the default user type based privileges
-    public function defaultRolePrivileges($key){
+    public function defaultRolePrivileges
+    ($key){
         $privileges=array(
                 'superAdmin'=>'{
                 "users":"enable",

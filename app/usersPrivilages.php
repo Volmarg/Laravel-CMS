@@ -19,6 +19,13 @@ class usersPrivilages extends Model
         $this->where('id',$updateIterator)->update(['privilege'=>$singleJson]);
     }
 
+    public function insertPrivilege($updateIterator,$singleJson){
+        $this->insert([
+                'users_id'=>$updateIterator,
+                'privilege'=>$singleJson
+            ]);
+    }
+
     public function updateRoleBasedPrivilege($id,$privs){
         $this->where('users_id',$id)->update(['privilege'=>$privs]);
     }

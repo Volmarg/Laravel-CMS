@@ -32,7 +32,7 @@ class UsersController extends Controller
         return back();
     }
 
-    public function changeUserType(Request $request, users $users_, UsersPrivilegesController $privilegesController,usersPrivilages $privileges_eloq,requestsController $requestsController){
+    public function changeUserType(Request $request, users $users_, UsersPrivilegesController $privilegesController,usersPrivilages $privileges_eloq,requestsController $requestsController, usersTypes $usersTypes){
 
 
     #first get the data sent from form
@@ -47,7 +47,7 @@ class UsersController extends Controller
     #set default privileges for given uer type
           $id=$users_->id($key)[0]['id'];    #get user ID
 
-          $privs=$privilegesController->defaultRolePrivileges($oneRequest);#getPrivileges for that role
+          $privs=$usersTypes->getPrivileges($oneRequest);#getPrivileges for that role
           $privileges_eloq->updateRoleBasedPrivilege($id,$privs); #setPrivileges for that role
       }
 

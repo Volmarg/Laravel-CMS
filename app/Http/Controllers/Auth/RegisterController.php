@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\usersTypes;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\users;
+use App\usersPrivilages;
 class RegisterController extends Controller
 {
     /*
@@ -62,10 +64,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+       User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        $usersTypes=new usersTypes();
+        $users=new users();
+        $usersPrivilages=new usersPrivilages();
+
+        $id=$users->id($data['name'])[0]['id'];
+
+        $privilege=$usersTypes->getPrivileges('normal');
+
+        $usersPrivilages->insertPrivilege($id,$privilege);
+
+        return redirect('/login');
     }
 }

@@ -9,6 +9,7 @@ use DeepCopy\f001\A;
 use Illuminate\Support\Facades\Auth;
 use function PHPSTORM_META\type;
 use App\usersPrivilages;
+use Session;
 class privilegesMiddleware
 {
     /**
@@ -21,7 +22,6 @@ class privilegesMiddleware
     public function handle($request, Closure $next)
     {
 
-        #TODO: create users privileges upon account registrations
         /*
          * This is prefix based privilege checker. Simply get prefix from uri and check
          * what is the status in DB for currently logged in user
@@ -33,15 +33,14 @@ class privilegesMiddleware
         #get page prefix - it's also set in route web.
         $prefix=$found[1];
 
-        #return $next($request);
-        if(auth()->user()==null
-            || $prefix==''){
-            //nobody is logged in
-            //no prefix was found in url/ no prefix match in db
-            return $next($request);
-        }elseif(Auth()->user()->accountType=='suspended'){ #check if status is set as suspeneded
 
-            return redirect('/errorsHandler')->with(['type'=>'suspended']);
+        //nobody is logged in
+        //no prefix was found in url/ no prefix match in db
+        if(auth()->user()==null || $prefix==''){
+            return $next($request);
+        }elseif(Auth()->user()->accountType=='suspended'){ #check if is suspeneded
+            Session::flash('type','suspended');
+            return redirect('/errorsHandler');
         }else
 
         #get current user data
@@ -64,10 +63,8 @@ class privilegesMiddleware
 
 
         if($block){ // current url is blocked
-
-            echo '<h1>You are not allowed to enter this section</h1>';
-            echo '<a href="'.url()->previous().'" ><button class="btn">Go back</button></a>';
-            die();
+            Session::flash('type','blocked');
+            return redirect('/errorsHandler');
         }else{  //current url is not blocked
             return $next($request);
         }

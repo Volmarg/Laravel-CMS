@@ -16,8 +16,10 @@ class CreateUsersTypesTable extends Migration
         Schema::create('users_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->timestamps();
+            $table->longText('privileges');
         });
+
+
     }
 
     /**
