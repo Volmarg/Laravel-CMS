@@ -1,5 +1,3 @@
 #TODO
 - single post screen gets messy if post is to short
-- upon user removal manuall from DB - there is problem with finding ID
 - menu add sometimes freaks out
-- image link on post is gone sometimes

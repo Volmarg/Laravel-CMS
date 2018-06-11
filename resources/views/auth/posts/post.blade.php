@@ -9,7 +9,10 @@
       'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
       'save table contextmenu directionality emoticons template paste textcolor'
     ],
-      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+      toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+        relative_urls : false,
+        remove_script_host : false,
+        convert_urls : true,
     });
   </script>
 
