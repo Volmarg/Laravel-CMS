@@ -13,6 +13,14 @@ section.singlePost * {
   word-break: break-word;
 }
 
+.cards__item p {
+  word-break: break-all;
+}
+
+.cards__item .card {
+  width: 100%;
+}
+
 ul.menuFront {
   font-weight: bold;
   margin-right: 150px;
@@ -49,10 +57,20 @@ ul.menuFront .dropdown ul {
 ul.menuFront .dropdown ul li {
   list-style-type: block;
   position: relative;
+  display: block;
+}
+
+ul.menuFront .dropdown ul li + li {
+  margin: 0px !important;
 }
 
 ul.menuFront .dropdown:hover ul {
   display: block;
+}
+
+ul.menuFront .dropdown-menu li a {
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 ul.menuFront li {
@@ -66,6 +84,10 @@ ul.menuFront a {
 
 ul.menuFront .sub_menu {
   display: none;
+}
+
+html {
+  height: 100%;
 }
 
 #user img {

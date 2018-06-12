@@ -19,3 +19,14 @@ section.singlePost *{
   -ms-word-break: break-word;
   word-break: break-word;
 }
+
+// Posts displayed on front page
+.cards__item{
+  p{
+    word-break: break-all;
+  }
+
+  .card{
+    width: 100%;
+  }
+}

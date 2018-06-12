@@ -90,19 +90,29 @@
                       {{-- but print only if given element doesnt have a parent so it's main menu element --}}
                       @if ($lvl_1->parentID=='-1')
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    <a href="#"
+                                       class="dropdown-toggle"
+                                       data-toggle="dropdown"
+                                       role="button"
+                                       aria-expanded="false"
+                                       aria-haspopup="true"
+                                    >
                                         {{$lvl_1->name}} <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>
                                         @foreach ($menuElements as $key_ => $lvl_2)
                                             @if ($lvl_1->id==$lvl_2->parentID)
-                                                    <a href="{{$lvl_2->slug}}">
+                                                <li  class="dropdown-item">
+                                                    <a
+
+                                                       href="{{$lvl_2->slug}}"
+                                                    >
                                                         {{$lvl_2->name}}
                                                     </a>
+                                                </li>
                                             @endif
                                         @endforeach
-                                        </li>
+
 
                                     </ul>
                                 </li>
@@ -118,11 +128,13 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li>
+
                                   @foreach ($menuElements as $key => $element)
-                                    <a href="{{$element->slug}}">{{$element->name}}</a>
+                                    <li>
+                                        <a href="{{$element->slug}}">{{$element->name}}</a>
+                                    </li>
                                   @endforeach
-                                </li>
+
 
                             </ul>
                         </li>

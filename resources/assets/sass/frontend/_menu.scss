@@ -37,14 +37,26 @@ ul.menuFront{
       li{
         list-style-type: block;
         position:relative;
+        display: block;
       }
-
+      li+li{
+        margin:0px !important;
+      }
     }
   }
 
   .dropdown:hover{
     ul{
       display:block;
+    }
+  }
+
+  .dropdown-menu{
+    li{
+      a{
+        white-space:normal;
+        word-wrap: break-word;
+      }
     }
   }
 

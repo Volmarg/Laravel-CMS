@@ -1,3 +1,5 @@
-#TODO
-- single post screen gets messy if post is to short
-- menu add sometimes freaks out
+#TODO ideas for later
+- dashboard icons
+- fix crosbrowser compatibility
+- RWD
+- adding image to posts on front
