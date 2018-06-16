@@ -26,9 +26,5 @@ function modals(){
             }
         }
 
-        //when user closes the modal via X button
-        $('#imagePickerModal .close').on('click',function(){
-            kill_n_set();
-        });
     }
 };

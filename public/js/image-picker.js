@@ -3,6 +3,9 @@ var imageLink='';
 $("#modalImagePicker").imagepicker({
     'clicked':function (select) {
         imageLink=handlePickedImages(select);
+    },
+    'initialized':function(){
+
     }
 });
 
@@ -24,9 +27,6 @@ function kill_n_set(){
 
     };
 
-     //var val= get();
-     //set(val);
-
     let target=tinyMCE.get('textAreaTinyMce2'); //creating panel
     if(target==undefined || target==null){
         target=tinyMCE.get('textAreaTinyMce');  //editing panel
@@ -38,3 +38,11 @@ function kill_n_set(){
     target.setContent(newVal);
 
 }
+
+
+//when user closes the modal via X button
+var targetModal='#imagePickerModal';
+$(targetModal+' .add').on('click',function(){
+    kill_n_set();
+    $(targetModal).find('.close').trigger('click');
+});

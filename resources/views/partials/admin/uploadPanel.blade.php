@@ -5,7 +5,7 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <section class="uploadWrapper" >
-              <h1> Media upload panel </h1>
+              <h1> Media upload </h1>
 
   <form action="/media/uploading" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
@@ -16,6 +16,8 @@
           <button class="formButton">Select file</button>
           <input type="file" name="fileToUpload" id="fileToUpload" multiple>
       </div>
+
+        <div id="fileName"></div>
 
       <div class="upload-btn-wrapper">
           <button class="formButton">Upload image</button>

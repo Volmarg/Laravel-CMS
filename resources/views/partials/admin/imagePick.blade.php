@@ -1,4 +1,8 @@
-<button class="btn btn-info" style="" id="myBtn"><img src="http://localhost:8000/img/media-icon-dashboard.png"/></button>
+<button class="btn btn-info addImageButton" style="" id="myBtn">
+    <img src="http://localhost:8000/img/media-icon-dashboard.png"/>
+    <span>Add Image</span>
+</button>
+
 
 <!-- The Modal -->
 <div id="imagePickerModal" class="modal">
@@ -33,6 +37,8 @@
 
             </section>
         </section>
+
+        <button class="btn btn-info add">Add image</button>
     </div>
 
 </div>

@@ -2,19 +2,19 @@
 
 @section('content')
 
-    <section classs="mainWrap" style="display:flex;justify-content:space-around;">
+    <section class="mainWrap usersPanel" style="display:flex;justify-content:space-around;">
 
         <div class="wrapper usersWrap ">
 
-            <h1>Users roles panel</h1>
+            <h1>Users roles</h1>
             <form action="/users/changeUserType" method="POST">
-                <table class="usersRoles table table-responsive">
+                <table class="usersRoles table table-responsive responsive-table">
                     <thead>
-                        <th>No.</th>
-                        <th>Name</th>
-                        <th>Curr. role</th>
-                        <th>Select role</th>
-                        <th>Remove</th>
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Curr. role</th>
+                        <th scope="col">Select role</th>
+                        <th scope="col">Remove</th>
                     </thead>
                     <tbody>
 
@@ -62,7 +62,7 @@
 
 
                 {!! csrf_field() !!}
-                <input type="submit" name="submited" value="Update" class="btn btn-warning">
+                <input type="submit" name="submited" value="Update" class="btn btn-info">
             </form>
 
 

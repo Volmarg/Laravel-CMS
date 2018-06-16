@@ -189,5 +189,6 @@
     <script src="{{ asset('js/initializer.js')}}"></script>
     <script src="{{ asset('js/mediaLibrary.js')}}"></script>
     <script src="{{ asset('js/image-picker.js')}}"></script>
+    <script src="{{ asset('js/upload.js')}}"></script>
 </body>
 </html>

@@ -1,5 +1,13 @@
-#TODO ideas for later
+#TODO ideas for later - someday
 - dashboard icons
 - fix crosbrowser compatibility
 - RWD
 - adding image to posts on front
+
+
+#Checklist
+- media upload: ok
+- media manage: ok
+
+- post editing: ok
+- post creating: ok

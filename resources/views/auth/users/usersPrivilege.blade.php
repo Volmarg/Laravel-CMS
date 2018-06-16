@@ -4,17 +4,17 @@
 
     <section classs="mainWrap" style="display:flex;justify-content:space-around;">
 
-        <div class="wrapper usersWrap usersPrivilege">
+        <div class="wrapper usersWrap usersPrivilege usersPanel">
 
-            <h1>Users privileges panel</h1>
+            <h1>Users privileges</h1>
             <form action="/users/changeUserPrivileges" method="POST">
-                <table class="table table-responsive">
+                <table class="responsive-table">
                     <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>User.</th>
+                        <th scope="col">No.</th>
+                        <th scope="col">User.</th>
                         @foreach($privileges[0] as $name=>$privilege)
-                            <th>{{$name}}</th>
+                            <th scope="col">{{$name}}</th>
                         @endforeach
                     </tr>
                     </thead>
