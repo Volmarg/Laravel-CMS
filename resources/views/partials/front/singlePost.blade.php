@@ -26,8 +26,14 @@
 @endsection
 
 @section('content')
+ <section class="postHolder">
+    <div class="breadcrumbs">
+        <a href="{{url()->previous()}}">Home</a>
+        <span>/</span>
+        <span >{{$postData->title}}</span>
+    </div>
 
   <h1>{{$postData->title}}</h1>
   <section class="description singlePost"><b>{!!$postData->body!!}</b></section>
-
+</section>
 @endsection

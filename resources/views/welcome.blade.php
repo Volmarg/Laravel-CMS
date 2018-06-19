@@ -120,27 +120,6 @@
                       @endif
                     @endforeach
 
-
-                      {{--old way menu --}}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                Menu <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu">
-
-                                  @foreach ($menuElements as $key => $element)
-                                    <li>
-                                        <a href="{{$element->slug}}">{{$element->name}}</a>
-                                    </li>
-                                  @endforeach
-
-
-                            </ul>
-                        </li>
-
-
-
                   </ul>
                 </div>
             @endif

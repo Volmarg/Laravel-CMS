@@ -21,6 +21,22 @@ section.singlePost * {
   width: 100%;
 }
 
+/*single post page*/
+
+.postHolder {
+  margin-top: 50px;
+}
+
+.postHolder .breadcrumbs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.postHolder .breadcrumbs * + * {
+  margin-left: 10px;
+}
+
 ul.menuFront {
   font-weight: bold;
   margin-right: 150px;
@@ -88,6 +104,11 @@ ul.menuFront .sub_menu {
 
 html {
   height: 100%;
+}
+
+html body {
+  min-height: 100%;
+  height: auto;
 }
 
 #user img {

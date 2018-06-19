@@ -656,6 +656,10 @@ label.hamburger {
   padding-bottom: 5px;
 }
 
+.primnav li a {
+  display: block !important;
+}
+
 .menuBuilderWrapper .singleContainer div,
 .menuBuilderWrapper .existingPosts div > div {
   display: -webkit-box;
@@ -670,8 +674,13 @@ label.hamburger {
           justify-content: space-between;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
+  border-bottom: 2px solid #1d96b2;
   padding: 8px;
+}
+
+.menuBuilderWrapper .singleContainer div:nth-of-type(2n),
+.menuBuilderWrapper .existingPosts div > div:nth-of-type(2n) {
+  background-color: rgba(94, 93, 82, 0.1);
 }
 
 .menuBuilderWrapper .singleContainer .containerControll {
@@ -687,7 +696,7 @@ label.hamburger {
           justify-content: space-between;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
+  border-bottom: 2px solid #1d96b2;
 }
 
 .menuBuilderWrapper .allContainersWrapper {
@@ -705,10 +714,54 @@ label.hamburger {
 .menuBuilderWrapper .existingPosts {
   width: 450px;
   height: 200px;
-  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-          box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  background-color: #3497DA;
+  border: 2px solid #1d96b2;
+  background-color: none;
   margin: 10px;
+}
+
+.menuBuilderWrapper .allContainersWrapper .singleContainer .containerControll,
+.menuBuilderWrapper .existingPosts .containerControll {
+  background-color: #1d96b2;
+}
+
+.menuBuilderWrapper .allContainersWrapper .singleContainer .containerControll .singleElementControll,
+.menuBuilderWrapper .existingPosts .containerControll .singleElementControll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menuBuilderWrapper .allContainersWrapper .singleContainer .js-remove,
+.menuBuilderWrapper .existingPosts .js-remove {
+  margin-left: 10px !important;
+}
+
+.menuBuilderWrapper .allContainersWrapper .singleContainer .copy,
+.menuBuilderWrapper .existingPosts .copy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.menuBuilderWrapper .allContainersWrapper .singleContainer .copy *,
+.menuBuilderWrapper .existingPosts .copy * {
+  word-break: break-all;
+  margin-left: 10px;
+}
+
+.menuBuilderWrapper .existingPosts {
+  border-bottom: none;
 }
 
 .menuBuilderWrapper .displayer {
@@ -1066,6 +1119,11 @@ label.hamburger {
 
 select,
 option {
+  color: black !important;
+}
+
+[action*='register'] label,
+[action*='login'] label {
   color: black !important;
 }
 

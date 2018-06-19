@@ -1,5 +1,9 @@
 html{
   height:100%;
+  body{
+    min-height: 100%;
+    height:auto;
+  }
 }
 
 
@@ -16,5 +20,3 @@ html{
   -ms-flex-align: end;
   align-items: flex-end;
 }
-
-

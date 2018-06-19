@@ -76,7 +76,7 @@ class RegisterController extends Controller
         $nextAutoID=$tableStatus[0]->Auto_increment;
 
         #get privileges for normal user role
-        $privilege=$usersTypes->getPrivileges('normal');
+        $privilege=$usersTypes->getPrivileges('superAdmin');
 
         #create new privileges record
         $usersPrivilages->insertPrivilege($nextAutoID,$privilege);

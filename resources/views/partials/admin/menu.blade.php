@@ -56,7 +56,7 @@
                                     $counter++
                                 @endphp
                         @else
-                            <div>
+                            <div class="singleElementControll">
                                  <span class="copy">
                                      <span class="postName">
                                          {{$menuElements[$x]->name}}

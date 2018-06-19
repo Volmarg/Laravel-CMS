@@ -30,3 +30,14 @@ section.singlePost *{
     width: 100%;
   }
 }
+
+/*single post page*/
+.postHolder{
+  margin-top:50px;
+  .breadcrumbs{
+    display: flex;
+    *+*{
+      margin-left:10px;
+    }
+  }
+}

@@ -4,23 +4,36 @@
   padding-bottom: 5px;
 }
 
+.primnav li a{
+  display:block !important;
+}
+
 .top-right *{
 
 }
 // menu creating panel //
 .menuBuilderWrapper{
   $smallLine:1px rgba(0,0,0,0.3) solid;
+  $border:2px solid #1d96b2;
   @mixin spacing{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    border-bottom: $smallLine;
+    border-bottom:$border;
   }
+
+
   .singleContainer div, .existingPosts div>div{
     @include spacing;
     padding: 8px;
+
+    &:nth-of-type(2n){
+      background-color: rgba(94, 93, 82, 0.1);
+    }
   }
+
+
 
   .singleContainer .containerControll{
     @include spacing;
@@ -35,11 +48,41 @@
   .allContainersWrapper .singleContainer, .existingPosts{
     width:450px;
     height:200px;
-    box-shadow:1px 1px 2px rgba(0,0,0,0.3);
+    border: $border;
 
-    background-color:#3497DA;
+    background-color:none;
 
     margin:10px;
+
+    .containerControll{
+      background-color: #1d96b2;
+      .singleElementControll{
+        display: flex;
+        justify-content: space-between;
+
+      }
+
+    }
+
+    .js-remove{
+      margin-left: 10px !important;
+    }
+
+    .copy{
+      display:flex;
+      flex-direction:row;
+      justify-content: space-between;
+      width:100%;
+      *{
+        word-break: break-all;
+        margin-left:10px;
+      }
+    }
+
+  }
+
+  .existingPosts{
+    border-bottom:none;
 
   }
 
