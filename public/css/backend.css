@@ -762,6 +762,7 @@ label.hamburger {
 
 .menuBuilderWrapper .existingPosts {
   border-bottom: none;
+  width: 600px;
 }
 
 .menuBuilderWrapper .displayer {

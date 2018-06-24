@@ -1,7 +1,9 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p>
-Creating Laravel based CMS in order to learn about this framework. 
+Created Laravel based CMS in order to learn about this framework. </p>
+
+<p>Live version 1.0 can be found <a href="http://projekt-laravel-cms.volmarg.hekko24.pl/">Here</a>. May contain bugs, and most likely it does. </p>
 
 <img src="https://github.com/Volmarg/Laravel-CMS/blob/master/screen_1.jpg?raw=true">
 <br/><br/></br>
